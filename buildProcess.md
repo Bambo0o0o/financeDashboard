@@ -67,11 +67,6 @@ docker: <https://www.docker.com/products/docker-desktop/>
   2) Go to frontend folder : cd client
   3) Copy {package.json} by EdRoh to frontend root directory
   4) Install tools from {package.json} that file located : npm install
-  5) Install vite package : npm create vite@4.1.0
-     1) Project name : client
-     2) Framework : React
-     3) variant :  Typescript
-     4) Go to client folder : cd client
 
 **********************************************************************************
 
@@ -87,8 +82,3 @@ docker: <https://www.docker.com/products/docker-desktop/>
      6) Run frontend : npm run dev
 5) Install packages : npm i react-redux @reduxjs/toolkit react-router-dom @mui/material @emotion/react @emotion/styled @mui/icons-material @mui/x-data-grid
 6) Install dependency packages : npm i -D @types/react-dom
-7) Delete files : App.css
-8) In {App.tsx} clear code in className="app" and delete all import
-9) In {index.css} clear all code
-10) In {index.css} add "inter" font from google fonts : @import url (...)
-11) Setup {index.css} with style : html, body, #root, .app{...}
