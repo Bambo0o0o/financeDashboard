@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time :   00:00:00/5:23:37
+Last building time :   00:18:32 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -92,3 +92,19 @@ docker: <https://www.docker.com/products/docker-desktop/>
 9) In {index.css} clear all code
 10) In {index.css} add "inter" font from google fonts : @import url (...)
 11) Setup {index.css} with style : html, body, #root, .app{...}
+12) Setup eslint package : npm i -D eslint eslint-config-react-app
+13) Create {eslintrc.json} in client folder then adding taq : "extends":"react-app"
+14) Go to {App.tsx} checking eslint working fine by : build function as hello(); over return funtion we will see "underline-red-mark" show that this fuction not found in our application
+    ***Eslint will help us to alert event abnormally by : Red-wavy-line***
+15) Create environment local file {.env.local} then adding taq : VITE_BASE_URL : ....
+16) Go to {tsconfig.json} file then adding taq(Let's us use URL in {.env.local} file) at the end as : "types":["vite/client"]
+     <!-- Import import method by using @/dir instead of traditional method ../../dir -->
+17) To improve import method to be better way by from "../../../ to be @/" instead : npm i -D @types/node
+    1) Go to {vit.config.ts} file import path and adding : resolve: {alias:[{find:"@",replacement:path.resolve(__dirname,"src")}]}
+    ***Warning Node depreciate : Option 'moduleResolution=node10' is deprecated and will stop functioning in TypeScript 7.0***
+    ***Solve using framework as "React + Vite / Next.js" by : {"compilerOptions":"moduleResolution": "bundler"} in {tsconfig.json} file***
+    ***Warning Node depreciate : Option 'esModuleInterop=false' is deprecated and will stop functioning in TypeScript 7.0.***
+    ***Solve by : {"compilerOptions": {"esModuleInterop": true}}***
+    2) In {tsconfig.json} file adding paths as : "paths":{"@/*":["./src/*"]}
+    3) When need to jump to that src file can do by : "ctrl+click" on that path
+    4) 
