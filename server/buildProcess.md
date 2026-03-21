@@ -107,4 +107,11 @@ docker: <https://www.docker.com/products/docker-desktop/>
     ***Solve by : {"compilerOptions": {"esModuleInterop": true}}***
     2) In {tsconfig.json} file adding paths as : "paths":{"@/*":["./src/*"]}
     3) When need to jump to that src file can do by : "ctrl+click" on that path
-    4) 
+
+## Setup : MUI Configurations and Themes (20:33)
+
+1) Create {theme.ts} file in src folder
+2) Copy data from EdRoh's file to here : <https://github.com/ed-roh/finance-app/blob/master/client/src/theme.ts>
+   ***On this {theme.ts} file we can gradiant color by shot key after highlight code as : ctrl+K and ctrl+g***
+   ***Which this option come from tailwind shage***
+3) 
