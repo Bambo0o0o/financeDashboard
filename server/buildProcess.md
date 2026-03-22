@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time :   00:40:10 /5:23:37
+Last building time :   00:48:50 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -139,3 +139,24 @@ docker: <https://www.docker.com/products/docker-desktop/>
       2) Create predicitons folder in scenes folder
       3) Create navbar folder in scenes folder
    3) Create state folder to store data that reused to render many pages too.
+2) Create {index.tsx} file in navbar folder
+   1) Using shortkey for typescript as tsrafce
+   2) Changing index name to be Navbar instead
+   3) Import tools as : useState, Link, Box, Typography, useTheme
+   4) Create params as : Navbar and palette
+   5) Clarify Flexbox mechanism which refer to "justify-content" and "align-item" : <https://css-tricks.com/snippets/css/a-guide-to-flexbox/>
+   6) Create {FlexBetween.tsx} in components folder
+      1) Import Box and styled
+      2) Move simple flexbox from (5) to {FlexBetween.tsx}
+      3) Export FlexBetween
+   7) Setup Left navbar in {index.tsx} file in navbar folder
+      1) Using FlexBetween to layout : Icon and Page name
+      2) Setup icon with Pix : <https://mui.com/material-ui/material-icons/?query=pi>
+      3) Place PixIcon taq and decorative with fontSize as 28px
+      4) Create Page name as "finDashboard" with Typography
+   8) Setup Right navbar in {index.tsx} file in navbar folder
+      1) Using FlexBetween to layout : Dashboard and Predictions buttons
+      2) Setup Hover when mouse place on dashboard will change color
+      3) Setup Link to navigate to dashboard page when was click
+      4) Setup Hover when mouse place on predictions will change color
+      5) Setup Link to navigate to predictions page when was click

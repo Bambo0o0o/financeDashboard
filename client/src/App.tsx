@@ -7,7 +7,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 // Setup 02 : routePaths
 import { Box } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import Navbar from "@/scenes/navbar";
+import Navbar from "@/scenes/navbar";
 // import Dashboard from "@/scenes/dashboard";
 // import Predictions from "@/scenes/predictions";
 
@@ -22,7 +22,7 @@ function App() {
           <CssBaseline/> 
           {/* Hello This is a First app run */}
 
-          {/* // Setup 02 : Routing to each paths */}
+          {/* Setup 02 : Routing to each paths */}
           <Box width="100%" height="100%" padding="1rem 2rem 4rem 2rem">
             <Navbar />
             <Routes>
@@ -30,9 +30,11 @@ function App() {
                 <Route path="/" element={<div>Dashboard page</div>} />
                 <Route path="/predictions" element={<div>Predictions page</div>} />
 
-              {/* Real page from scenes folder and rendering pages */}
+              {/* Setup 03 : Final complete page Rendering */}
               {/* <Route path="/" element={<Dashboard />} />
               <Route path="/predictions" element={<Predictions />} /> */}
+              {/* End Setup 03 */}
+
             </Routes>
           </Box>
           {/* End Setup 02 */}
