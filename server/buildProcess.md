@@ -183,7 +183,16 @@ docker: <https://www.docker.com/products/docker-desktop/>
           - ...
           - (Box) bgcolor="#fff" gridArea="j" (/Box)
    7) Making responsive layout with small-large display grid
-      1) 
+      1) Adding conditon function as : isAboveMediumScreens
+      2) Setup conditon between : gridTemplateLargeScreens and gridTemplateSmallScreens
+      3) Keep Grid layout as :
+          - (Box) bgcolor="#fff" gridArea="a" (/Box)
+          - ...
+          - (Box) bgcolor="#fff" gridArea="j" (/Box)
 
-   8) Create layout files as : Row1.tsx, Row2.tsx, Row3.tsx
-      1) 
+   8) Create Styling for Grid elements as : DashboardBox
+      1) Using DashboardBox instead of Box taq on each grid
+          - (DashboardBox) bgcolor="#fff" gridArea="a" (/DashboardBox)
+          - ...
+          - (DashboardBox) bgcolor="#fff" gridArea="j" (/DashboardBox)
+   9)  
