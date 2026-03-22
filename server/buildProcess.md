@@ -214,3 +214,21 @@ docker: <https://www.docker.com/products/docker-desktop/>
       4) Import api from @/state/api
       5) Export store from {api.ts} and create api.middleware function
       6) Setup Provider to store
+     ***Page ready to render data from backend and Database***
+
+## Setup Backend to fetch data from database
+
+***We will used package.json by EdRoh will better API environment to study case***
+
+1) Back to root project financeDashboard folder : cd ..
+2) Create backend folder on root project as : mkdir server
+3) Go to server folder : cd server
+4) Copy {package.json} by EdRoh to frontend root directory
+5) Install tools from {package.json} that file located : npm install
+
+**********************************************************************************
+
+## Backend tools setup
+
+1) Initialize package to create default {package.json} file : npm init -y
+2) Install backend packages (1:41:40) : npm i express body-parser cors dotenv helmet morgan mongoose mongoose-currency
