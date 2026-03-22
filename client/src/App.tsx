@@ -8,8 +8,8 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Box } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "@/scenes/navbar";
-// import Dashboard from "@/scenes/dashboard";
-// import Predictions from "@/scenes/predictions";
+import Dashboard from "@/scenes/dashboard";
+import Predictions from "@/scenes/predictions";
 
 function App() {
   const theme = useMemo(() => createTheme(themeSettings), []);
@@ -27,12 +27,12 @@ function App() {
             <Navbar />
             <Routes>
               {/* For render check : Dashboar and Prediction */}
-                <Route path="/" element={<div>Dashboard page</div>} />
-                <Route path="/predictions" element={<div>Predictions page</div>} />
+                {/* <Route path="/" element={<div>Dashboard page</div>} />
+                <Route path="/predictions" element={<div>Predictions page</div>} /> */}
 
               {/* Setup 03 : Final complete page Rendering */}
-              {/* <Route path="/" element={<Dashboard />} />
-              <Route path="/predictions" element={<Predictions />} /> */}
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/predictions" element={<Predictions />} />
               {/* End Setup 03 */}
 
             </Routes>

@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time :   00:48:50 /5:23:37
+Last building time :   00:58:53 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -160,3 +160,10 @@ docker: <https://www.docker.com/products/docker-desktop/>
       3) Setup Link to navigate to dashboard page when was click
       4) Setup Hover when mouse place on predictions will change color
       5) Setup Link to navigate to predictions page when was click
+3) Go to {App.tsx} to setup routes as : Dashboard and Predictions pages
+   1) Import Dashboard
+   2) Create route path navigate to dashboard page
+   3) Go to Dashboard folder in scenes folder create {index.tsx}
+      1) 
+   4) Create layout files as : Row1.tsx, Row2.tsx, Row3.tsx
+      1) 
