@@ -164,6 +164,7 @@ docker: <https://www.docker.com/products/docker-desktop/>
    1) Import Dashboard
    2) Create route path navigate to dashboard page
    3) Go to Dashboard folder in scenes folder create {index.tsx}
-      1) 
+      1) Create template by type : tsrafce
+      2) Change name from index to Dashboard
    4) Create layout files as : Row1.tsx, Row2.tsx, Row3.tsx
       1) 
