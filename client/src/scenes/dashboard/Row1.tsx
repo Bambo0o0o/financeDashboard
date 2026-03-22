@@ -1,8 +1,12 @@
 // Setup 01 : Simple setup Row1
 import DashboardBox from "@/components/DashboardBox"
+import {useGetKpisQuery} from "@/state/api"
+
+
 type Props = {}
 
 const Row1 = (props: Props) => {
+  const {data} = useGetKpisQuery();
   return (
     <>  
     <DashboardBox gridArea="a"></DashboardBox>

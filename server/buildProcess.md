@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time :   01:16:00 /5:23:37
+Last building time :   01:30:33 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -78,7 +78,7 @@ docker: <https://www.docker.com/products/docker-desktop/>
 
 **********************************************************************************
 
-## Basic and Frontend Installations (5:20)
+## Frontend setup tools and pages
 
 1) NodeJs from : <https://nodejs.org/en/download/>
 2) Install npx for npm package : npm install -g npx
@@ -202,3 +202,15 @@ docker: <https://www.docker.com/products/docker-desktop/>
          2) Rows2 adding elements : "d", "e", "f"
          3) Rows3 adding elements : "g", "h", "i", "j"
       3) Go to {index.tsx} in scenes/dashboard folder Adding taq as : (Row1/), (Row2/), (Row3/)
+4) Create {api.tsx} in src/state folder
+   1) Setup baseQuery as : getKpis, getProducts, getTransactions
+   2) Setup baseURL to render data as : import.meta.env.VITE_BASE_URL
+   3) Setup build.query to shows data KPIs, Products, Transactions on Dashboard
+   4) To render KPIs to dashboard go to {Row1.tsx} adding : const {data} = useGetKpisQuery();
+   5) Go to {main.tsx} file in src folder
+      1) Import Provider from react-redux
+      2) Import configureStore from @reduxjs/toolkit
+      3) Import setupListerners from  @reduxjs/toolkit/query
+      4) Import api from @/state/api
+      5) Export store from {api.ts} and create api.middleware function
+      6) Setup Provider to store
