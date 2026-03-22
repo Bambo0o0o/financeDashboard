@@ -1,6 +1,6 @@
 // Setup 01 : Simple dashboard page to show it work fine
-import DashboardBox from '@/components/DashboardBox';
-import {Box, useMediaQuery, useTheme} from '@mui/material'
+// import DashboardBox from '@/components/DashboardBox';
+// import {Box, useMediaQuery, useTheme} from '@mui/material'
 
 // type Props = {}
 // const Dashboard = (props: Props) => {
@@ -52,102 +52,6 @@ import {Box, useMediaQuery, useTheme} from '@mui/material'
 
 
 //Setup 03 : Grid layout as ---"Dynamic page"
-const gridTemplateLargeScreens = `
-  "a b c"
-  "a b c"
-  "a b c"
-  "a b f"
-  "d e f"
-  "d e f"
-  "d h i"
-  "g h i"
-  "g h j"
-  "g h j"
-`;
-
-// Setup keep row ratio and list down
-const gridTemplateSmallScreens = `
-  "a"
-  "a"
-  "a"
-  "a"
-  "b"
-  "b"
-  "b"
-  "b"
-  "c"
-  "c"
-  "c"
-  "d"
-  "d"
-  "d"
-  "e"
-  "e"
-  "f"
-  "f"
-  "f"
-  "g"
-  "g"
-  "g"
-  "h"
-  "h"
-  "h"
-  "h"
-  "i"
-  "i"
-  "j"
-  "j"
-`;
-
-const Dashboard = () => {
-  const isAboveMediumScreens = useMediaQuery("(min-width: 1200px)");
-  const {palette} = useTheme();
-  return (
-    <Box
-      width="100%"
-      height="100%"
-      display="grid"
-      gap="1.5rem"
-      sx={
-        isAboveMediumScreens
-          ? {
-              gridTemplateColumns: "repeat(3, minmax(370px, 1fr))",
-              gridTemplateRows: "repeat(10, minmax(60px, 1fr))",
-              gridTemplateAreas: gridTemplateLargeScreens,
-            }
-          : {
-              gridAutoColumns: "1fr",
-              gridAutoRows: "80px",
-              gridTemplateAreas: gridTemplateSmallScreens,
-            }
-      }
-    >
-      {/* Setup Dashboard to show layout which we create as a to j  */}
-        <DashboardBox bgcolor="#fff" gridArea="a"></DashboardBox>
-        <DashboardBox bgcolor="#fff" gridArea="b"></DashboardBox>
-        <DashboardBox bgcolor="#fff" gridArea="c"></DashboardBox>
-        <DashboardBox bgcolor="#fff" gridArea="d"></DashboardBox>
-        <DashboardBox bgcolor="#fff" gridArea="e"></DashboardBox>
-        <DashboardBox bgcolor="#fff" gridArea="f"></DashboardBox>
-        <DashboardBox bgcolor="#fff" gridArea="g"></DashboardBox>
-        <DashboardBox bgcolor="#fff" gridArea="h"></DashboardBox>
-        <DashboardBox bgcolor="#fff" gridArea="i"></DashboardBox>
-        <DashboardBox bgcolor="#fff" gridArea="j"></DashboardBox>
-    </Box>
-  );
-};
-
-// Setup 04 : Complete setup and Layout
-// import { Box, useMediaQuery } from "@mui/material";
-// import Row1 from "./Row1";
-// import Row2 from "./Row2";
-// import Row3 from "./Row3";
-
-// // Alphabet a to j is the Grid components on our dashboard which we have 10 elements as : a to j
-// // 4x3, 4x3, 3x3
-// // 3x3, 2x3, 3x3
-// // 3x3, 4x3, 2x3 and 2x3
-// // On each elements unit as below, Alphabet will list left-right and top-down
 // const gridTemplateLargeScreens = `
 //   "a b c"
 //   "a b c"
@@ -160,6 +64,8 @@ const Dashboard = () => {
 //   "g h j"
 //   "g h j"
 // `;
+
+// // Setup keep row ratio and list down
 // const gridTemplateSmallScreens = `
 //   "a"
 //   "a"
@@ -195,6 +101,7 @@ const Dashboard = () => {
 
 // const Dashboard = () => {
 //   const isAboveMediumScreens = useMediaQuery("(min-width: 1200px)");
+//   const {palette} = useTheme();
 //   return (
 //     <Box
 //       width="100%"
@@ -203,10 +110,9 @@ const Dashboard = () => {
 //       gap="1.5rem"
 //       sx={
 //         isAboveMediumScreens
-//         // Setup Grid layout as 3:3:4 units
 //           ? {
-//               gridTemplateColumns: "repeat(3, minmax(370px, 1fr))",     //Split page to 3 columns, column min-width as 370px, Split as 1 frame page
-//               gridTemplateRows: "repeat(10, minmax(60px, 1fr))",        //Split page to 10 rows, rom min-width as 60px, Split as 1 frame page
+//               gridTemplateColumns: "repeat(3, minmax(370px, 1fr))",
+//               gridTemplateRows: "repeat(10, minmax(60px, 1fr))",
 //               gridTemplateAreas: gridTemplateLargeScreens,
 //             }
 //           : {
@@ -216,12 +122,108 @@ const Dashboard = () => {
 //             }
 //       }
 //     >
-//       {/* Setup each Unit element on dashboard page */}
-//       <Row1 />
-//       <Row2 />
-//       <Row3 />
+//       {/* Setup Dashboard to show layout which we create as a to j  */}
+//         <DashboardBox gridArea="a"></DashboardBox>
+//         <DashboardBox gridArea="b"></DashboardBox>
+//         <DashboardBox gridArea="c"></DashboardBox>
+//         <DashboardBox gridArea="d"></DashboardBox>
+//         <DashboardBox gridArea="e"></DashboardBox>
+//         <DashboardBox gridArea="f"></DashboardBox>
+//         <DashboardBox gridArea="g"></DashboardBox>
+//         <DashboardBox gridArea="h"></DashboardBox>
+//         <DashboardBox gridArea="i"></DashboardBox>
+//         <DashboardBox gridArea="j"></DashboardBox>
 //     </Box>
 //   );
 // };
+
+// Setup 04 : Complete setup and Layout
+import { Box, useMediaQuery } from "@mui/material";
+import Row1 from "./Row1";
+import Row2 from "./Row2";
+import Row3 from "./Row3";
+
+// Alphabet a to j is the Grid components on our dashboard which we have 10 elements as : a to j
+// 4x3, 4x3, 3x3
+// 3x3, 2x3, 3x3
+// 3x3, 4x3, 2x3 and 2x3
+// On each elements unit as below, Alphabet will list left-right and top-down
+const gridTemplateLargeScreens = `
+  "a b c"
+  "a b c"
+  "a b c"
+  "a b f"
+  "d e f"
+  "d e f"
+  "d h i"
+  "g h i"
+  "g h j"
+  "g h j"
+`;
+const gridTemplateSmallScreens = `
+  "a"
+  "a"
+  "a"
+  "a"
+  "b"
+  "b"
+  "b"
+  "b"
+  "c"
+  "c"
+  "c"
+  "d"
+  "d"
+  "d"
+  "e"
+  "e"
+  "f"
+  "f"
+  "f"
+  "g"
+  "g"
+  "g"
+  "h"
+  "h"
+  "h"
+  "h"
+  "i"
+  "i"
+  "j"
+  "j"
+`;
+
+const Dashboard = () => {
+  const isAboveMediumScreens = useMediaQuery("(min-width: 1200px)");
+  return (
+    <Box
+      width="100%"
+      height="100%"
+      display="grid"
+      gap="1.5rem"
+      sx={
+        isAboveMediumScreens
+        // Setup Grid layout as 3:3:4 units
+          ? {
+              gridTemplateColumns: "repeat(3, minmax(370px, 1fr))",     //Split page to 3 columns, column min-width as 370px, Split as 1 frame page
+              gridTemplateRows: "repeat(10, minmax(60px, 1fr))",        //Split page to 10 rows, rom min-width as 60px, Split as 1 frame page
+              gridTemplateAreas: gridTemplateLargeScreens,
+            }
+          : {
+              gridAutoColumns: "1fr",
+              gridAutoRows: "80px",
+              gridTemplateAreas: gridTemplateSmallScreens,
+            }
+      }
+    >
+    {/* Adding elements : "a", "b", "c" */}
+      <Row1 /> 
+    {/* Adding elements : "d", "e", "f" */}
+      <Row2 />
+    {/* Adding elements : "g", "h", "i", "j" */}
+      <Row3 />
+    </Box>
+  );
+};
 
 export default Dashboard;

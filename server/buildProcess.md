@@ -195,4 +195,10 @@ docker: <https://www.docker.com/products/docker-desktop/>
           - (DashboardBox) bgcolor="#fff" gridArea="a" (/DashboardBox)
           - ...
           - (DashboardBox) bgcolor="#fff" gridArea="j" (/DashboardBox)
-   9)  
+   9) Split Dashboard to be 3 Rows as : Row1, Row2, Row3
+      1) Create {Row1.tsx}, {Row2.tsx}, {Row3.tsx} in scenes/dashboard folder
+      2) Each file create template as : tsrafce
+         1) Rows1 adding elements : "a", "b", "c"
+         2) Rows2 adding elements : "d", "e", "f"
+         3) Rows3 adding elements : "g", "h", "i", "j"
+      3) Go to {index.tsx} in scenes/dashboard folder Adding taq as : (Row1/), (Row2/), (Row3/)
