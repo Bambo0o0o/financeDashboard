@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time :   00:58:53 /5:23:37
+Last building time :   01:13:53 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -166,5 +166,19 @@ docker: <https://www.docker.com/products/docker-desktop/>
    3) Go to Dashboard folder in scenes folder create {index.tsx}
       1) Create template by type : tsrafce
       2) Change name from index to Dashboard
-   4) Create layout files as : Row1.tsx, Row2.tsx, Row3.tsx
+      3) Create simple dashboard show page with lighter color as grey[300]
+     ***Now we have to decision to use tools as Gird/FlexBox***
+          ***FlexBox : used for one dimentsion as one line***
+          ***Grid : used for more complexible as row/column***
+          ***Link Grid info : <https://grid.malven.co/> and <https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/grid-template-areas>***
+   4) In this project we will use : grid-template-areas
+      1) We will design 3 columns and rows as : 3/3/4
+      2) Structure of Grid is 10x9 unit
+      3) Columns is 3 unit with : Split page to 3 columns, column min-width as 370px, Split as 1 frame page
+      4) Rows is 2, 3, 4 units with : Split page to 10 rows, rom min-width as 60px, Split as 1 frame page
+   5) Create gridTemplateColumns, gridTemplateRows, gridTemplateAreas
+   6) Create each elements on gridTemplateAreas : a to j
+      1) Create "a" element 
+
+   7) Create layout files as : Row1.tsx, Row2.tsx, Row3.tsx
       1) 
