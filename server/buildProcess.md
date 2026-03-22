@@ -1,9 +1,12 @@
 # Build MERN financeDashboard
 
-Last building time :   00:18:32 /5:23:37
+Last building time :   00:40:10 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
+
+<!-- Shortkey -->
+1) In intellisence list we can automatic import tools by : ctrl + click on keyword
 
 <!-- myGitHub -->
 echo "# financeDashboard" >> README.md
@@ -75,6 +78,8 @@ docker: <https://www.docker.com/products/docker-desktop/>
 
 **********************************************************************************
 
+## Basic and Frontend Installations (5:20)
+
 1) NodeJs from : <https://nodejs.org/en/download/>
 2) Install npx for npm package : npm install -g npx
 3) Install VsCode text edtor : <https://code.visualstudio.com/download>
@@ -114,4 +119,23 @@ docker: <https://www.docker.com/products/docker-desktop/>
 2) Copy data from EdRoh's file to here : <https://github.com/ed-roh/finance-app/blob/master/client/src/theme.ts>
    ***On this {theme.ts} file we can gradiant color by shot key after highlight code as : ctrl+K and ctrl+g***
    ***Which this option come from tailwind shage***
-3) 
+3) This {theme.ts} are configuration for : color shading, color palette and typography
+4) Create {expanded-theme.ts} file to expnaded palette color in src folder
+   1) Setup interface PaletteColor{} and interface Palette{}
+5) Go to {App.tsx} in src folder using themeSetting{} function by adding :useMemo as themeSetting
+6) Setup taqs : ThemeProvider and CssBaseline
+7) Frontend run apps : npm run dev
+8) To check work fine "ctrl+ click" on : <http://localhost:5173/>
+   ***This process works fine with black background color and wording as "Hello This is a First app run"***
+
+## Setup : Router navigator to Dashboard and Predictions pages (40:10)
+
+***Keep in mind that folder architecture must be easiest as you can see***
+
+1) Create three folder in src folder
+   1) Create components folder to reusable elements on many location in our pages
+   2) Create scenes folder to render main page in this case is : Dashboard and Prediciton
+      1) Create dashboard folder in scenes folder
+      2) Create predicitons folder in scenes folder
+      3) Create navbar folder in scenes folder
+   3) Create state folder to store data that reused to render many pages too.
