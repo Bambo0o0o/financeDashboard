@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time :   01:13:53 /5:23:37
+Last building time :   01:16:00 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -178,7 +178,12 @@ docker: <https://www.docker.com/products/docker-desktop/>
       4) Rows is 2, 3, 4 units with : Split page to 10 rows, rom min-width as 60px, Split as 1 frame page
    5) Create gridTemplateColumns, gridTemplateRows, gridTemplateAreas
    6) Create each elements on gridTemplateAreas : a to j
-      1) Create "a" element 
+      1) Create "a" to "j" element to show Grid layout :
+          - (Box) bgcolor="#fff" gridArea="a" (/Box)
+          - ...
+          - (Box) bgcolor="#fff" gridArea="j" (/Box)
+   7) Making responsive layout with small-large display grid
+      1) 
 
-   7) Create layout files as : Row1.tsx, Row2.tsx, Row3.tsx
+   8) Create layout files as : Row1.tsx, Row2.tsx, Row3.tsx
       1) 
