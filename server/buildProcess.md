@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time :   1:41:40 /5:23:37
+Last building time :   1:57:10 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -239,16 +239,13 @@ docker: <https://www.docker.com/products/docker-desktop/>
    1) Import tools for backend : express body-parser cors dotenv helmet morgan mongoose mongoose-currency
    2) Adding "type" to {package.json} to be used import express: "type": "module"
    3) Adding "dev" to {package.json} to allow us run {index.js} file : "dev":"nodemon index.js"
-   4) Test run server : console.log("Server run")
-   5) Run server : npm run dev
-   6) Import datas from routes path : kpiRoutes, productRoutes, transactionRoutes
-   7) Import models as : KPI, Product, Transaction
-   8) Import raw data from {data.js} as : kpis, products, transactions
-   9) Setup tools app.use() as : express, helmet, morgan, body-parser, cors
+   4) Setup tools app.use() as : express, helmet, morgan, body-parser, cors
+   5) Test run server : console.log("Server run")
+   6) Run server : npm run dev
 
 ## Setup MongoDB for finnDashboard
 
-1) Setup MongoDB with new database 
+1) Setup MongoDB with new database
    1) Go to MongoDb as : <https://cloud.mongodb.com/v2#/org/61a38e44e178665975fbd2f9/projects/create>
    2) Create database name : finnDashboard
    3) Option setup : neglect
@@ -272,3 +269,15 @@ docker: <https://www.docker.com/products/docker-desktop/>
    1) Setup connection as : mongoose.connect(process.env.MONGO_URL, {})
    2) Seteup callBack function to check port connect : app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
    3) Setup catch error event : .catch((error) => console.log(`${error} did not connect`))
+4) Create {.gitignore} file in server folder then adding taqs as :
+      - .env
+      - node_modules
+5) Create data folder in server folder
+   1) Create {data.js} in data folder
+   2) Copy all datas from EdRoh's raw datas to {data.js}
+   3) See concepts database link : <https://lucid.app/lucidchart/23d63d3a-f89c-472d-99d3-4c0a35c67816/edit?invitationId=inv_863ef5c2-6c3d-42ec-85da-c522ddb15430&page=0_0#>
+   4) Import datas from routes path : kpiRoutes, productRoutes, transactionRoutes
+   5) Import models as : KPI, Product, Transaction
+   6) Import raw data from {data.js} as : kpis, products, transactions
+   7) Toggle KPIs taq on to upload data --> Save index.js --> Toggle KPIs taq off
+   ***Upload data must do one time then have to marks as note**
