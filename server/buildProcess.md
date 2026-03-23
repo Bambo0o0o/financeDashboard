@@ -245,10 +245,30 @@ docker: <https://www.docker.com/products/docker-desktop/>
    7) Import models as : KPI, Product, Transaction
    8) Import raw data from {data.js} as : kpis, products, transactions
    9) Setup tools app.use() as : express, helmet, morgan, body-parser, cors
-   10) Setup upload datas from {data.js} as one time toggle on then have to be toggle off
-   ***Upload data must do one time then have to marks as note**
 
-5) Setup MongoDB with new database as : finDashboard
-   1) Setup URI
-   2) Setup password
+## Setup MongoDB for finnDashboard
+
+1) Setup MongoDB with new database 
+   1) Go to MongoDb as : <https://cloud.mongodb.com/v2#/org/61a38e44e178665975fbd2f9/projects/create>
+   2) Create database name : finnDashboard
+   3) Option setup : neglect
+   4) Create cluster : <https://cloud.mongodb.com/v2/69c14e0929ccca266395266d#/clusters/starterTemplates>
+   5) Deploy your cluster : Free
+   6) Configurations name : cluster0
+   7) Provider :aws
+   8) Region : Singapore(ap-southeast-1)
+   9) Click : Create Deployment
+   10) Setup Username and Password
+   11) Setup connection as : Drivers with NodeJs
    ***Password have to carefully when setup otherwise it will meet error when upload to webService**
+   12) To be generate new password click as sidebar : Security Quickstart
+   13) To be check connection complete on Cluster menu click : Browse Collection
+   14) To get IP address go to Database & Network Access on sidebar select : IP Access List
+2) Create {.env} file to keept database url
+   ***Don't have any space or extra symbole in URL***
+   1) Create URL : MONGO_URL='mongodb+srv://(username):(password)@cluster0.0qb99d5.mongodb.net/?appName=Cluster0'
+   2) Create PORT(must align as client port in {.env.local} ) : 1337
+3) Setup connection on {index.js} file in server folder
+   1) Setup connection as : mongoose.connect(process.env.MONGO_URL, {})
+   2) Seteup callBack function to check port connect : app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
+   3) Setup catch error event : .catch((error) => console.log(`${error} did not connect`))
