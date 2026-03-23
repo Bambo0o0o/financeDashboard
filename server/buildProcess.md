@@ -1,12 +1,14 @@
 # Build MERN financeDashboard
 
-Last building time :   01:30:33 /5:23:37
+Last building time :   1:41:40 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
 
 <!-- Shortkey -->
 1) In intellisence list we can automatic import tools by : ctrl + click on keyword
+2) Run client : npm run dev
+3) Run server :  npm run dev
 
 <!-- myGitHub -->
 echo "# financeDashboard" >> README.md
@@ -232,3 +234,21 @@ docker: <https://www.docker.com/products/docker-desktop/>
 
 1) Initialize package to create default {package.json} file : npm init -y
 2) Install backend packages (1:41:40) : npm i express body-parser cors dotenv helmet morgan mongoose mongoose-currency
+3) Install dependency package : npm i -D nodemon --force
+4) Create {index.js} in server folder
+   1) Import tools for backend : express body-parser cors dotenv helmet morgan mongoose mongoose-currency
+   2) Adding "type" to {package.json} to be used import express: "type": "module"
+   3) Adding "dev" to {package.json} to allow us run {index.js} file : "dev":"nodemon index.js"
+   4) Test run server : console.log("Server run")
+   5) Run server : npm run dev
+   6) Import datas from routes path : kpiRoutes, productRoutes, transactionRoutes
+   7) Import models as : KPI, Product, Transaction
+   8) Import raw data from {data.js} as : kpis, products, transactions
+   9) Setup tools app.use() as : express, helmet, morgan, body-parser, cors
+   10) Setup upload datas from {data.js} as one time toggle on then have to be toggle off
+   ***Upload data must do one time then have to marks as note**
+
+5) Setup MongoDB with new database as : finDashboard
+   1) Setup URI
+   2) Setup password
+   ***Password have to carefully when setup otherwise it will meet error when upload to webService**
