@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { loadType } from "mongoose-currency";
 
+// Creat param as Schema which instance of mongoose.schema(to be short word)
 const Schema = mongoose.Schema;
 loadType(mongoose);
 

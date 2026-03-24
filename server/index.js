@@ -7,11 +7,13 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
 
-// Setup 02 : Import dashboard data and function with KPI, Products, Transactions
+// Setup 02 : Import dashboard data and function with KPI
 import kpiRoutes from "./routes/kpi.js";
+import KPI from "./models/KPI.js";
+import { kpis } from "./data/data.js";
+
 // import productRoutes from "./routes/product.js";
 // import transactionRoutes from "./routes/transaction.js";
-import KPI from "./models/KPI.js";
 // import Product from "./models/Product.js";
 // import Transaction from "./models/Transaction.js";
 // import { kpis, products, transactions } from "./data/data.js";
@@ -32,7 +34,7 @@ app.use(cors());
 // console.log("Server run")
 
 
-// Setup 02 :
+// Setup 02 : kpi, product, transaction
 // /* ROUTES */
 app.use("/kpi", kpiRoutes);
 // app.use("/product", productRoutes);
@@ -50,8 +52,8 @@ mongoose
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ADD DATA ONE TIME ONLY OR AS NEEDED */
-    // await mongoose.connection.db.dropDatabase();
-    // KPI.insertMany(kpis);
+    // await mongoose.connection.db.dropDatabase();     // Add 01
+    // KPI.insertMany(kpis);                            // Add 02
     // Product.insertMany(products);
     // Transaction.insertMany(transactions);
   })

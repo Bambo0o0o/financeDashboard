@@ -277,7 +277,8 @@ docker: <https://www.docker.com/products/docker-desktop/>
    2) Copy all datas from EdRoh's raw datas to {data.js}
    3) See concepts database link : <https://lucid.app/lucidchart/23d63d3a-f89c-472d-99d3-4c0a35c67816/edit?invitationId=inv_863ef5c2-6c3d-42ec-85da-c522ddb15430&page=0_0#>
 
-   <!-- Setup KPIs data for dashboard rendering -->
+## Setup KPIs dashboard
+
    1) Import kpi route in {index.js} in server folder as : kpiRoutes
    2) Create routes folder in server folder
    3) Create {kpi.js} file in routes folder then configurate kpi route
@@ -287,16 +288,15 @@ docker: <https://www.docker.com/products/docker-desktop/>
    5) Create {KPI.js}file in models folder
       1) Import mongoose for create kpis schema
       2) Import loadType for mongoose-currency
-      3) Create schema for kpis as : daySchema, monthSchema, KPISchema
-      4) Export KPI
+      3) Create schema format for kpis as : daySchema, monthSchema, KPISchema
+      4) In daySchema setup currency as : revenue, expenses, toJSON
+      5) In monthSchema setup currency as : revenue, expenses, operationalExpenses, nonOperationalExpenses, toJSON
+      6) In KPISchema setup currency as : totalProfit, totalRevenue, totalExpenses, expensesByCategory, monthlyData, dailyData, timestamps, toJSON
+      7) Calling KPI schema as : mongoose.model("KPI", KPISchema)
+      8) Export KPI schema
    6) In {index.js} in server folder import models as : KPI
    7) In {index.js} in server folder import raw data from {data.js} as : kpis
-
-   <!-- 4) In {index.js} in server folder import datas from routes path : kpiRoutes, productRoutes, transactionRoutes
-   8) In {index.js} in server folder import models as : KPI, Product, Transaction
-   9)  In {index.js} in server folder import raw data from {data.js} as : kpis, products, transactions -->
-
-## Setup dashboard element
-
-   1) Toggle KPIs taq on to upload data --> Save index.js --> Toggle KPIs taq off
+   8) Toggle dropDatabase taq on to upload data --> Save index.js --> Toggle dropDatabase taq off
+   9) Toggle KPIs taq on to upload data --> Save index.js --> Toggle KPIs taq off
    ***Upload data must do one time then have to marks as note**
+   
