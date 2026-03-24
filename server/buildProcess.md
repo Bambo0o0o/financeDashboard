@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time :   1:57:10 /5:23:37
+Last building time : 02:15:15 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -9,6 +9,7 @@ myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
 1) In intellisence list we can automatic import tools by : ctrl + click on keyword
 2) Run client : npm run dev
 3) Run server :  npm run dev
+4) Turn on console.log() by highlight word : ctrl + alt + l
 
 <!-- myGitHub -->
 echo "# financeDashboard" >> README.md
@@ -279,6 +280,7 @@ docker: <https://www.docker.com/products/docker-desktop/>
 
 ## Setup KPIs dashboard
 
+   <!-- Backend setup -->
    1) Import kpi route in {index.js} in server folder as : kpiRoutes
    2) Create routes folder in server folder
    3) Create {kpi.js} file in routes folder then configurate kpi route
@@ -298,5 +300,14 @@ docker: <https://www.docker.com/products/docker-desktop/>
    7) In {index.js} in server folder import raw data from {data.js} as : kpis
    8) Toggle dropDatabase taq on to upload data --> Save index.js --> Toggle dropDatabase taq off
    9) Toggle KPIs taq on to upload data --> Save index.js --> Toggle KPIs taq off
-   ***Upload data must do one time then have to marks as note**
-   
+   ***Upload data must do one time then have to marks as note : 02:15:15**
+
+   <!-- Frontend setup -->
+   1) Go to {Row1.tsx} file create console.log() with data to check fetching data complete on browser development tools as : fetch/XHR
+   2) On backend termical (server) got warning 304(mean loging to backend) as : GET /kpi/kpis/ HTTP/1.1" 304
+   3) Go to rechart which is chart library : <https://recharts.github.io/?p=/en-US/>
+   4) Install rechart to our client folder : npm install recharts
+   5) Run client again : npm run dev
+   6) Go to example tab and select "SimpleAreaChart" and copy taq : ResponsiveContainer or AreaChart
+   7) Place them in {Row1.tsx} file between DashboardBox taq of gridArea "a"
+   8) Import recharts tools
