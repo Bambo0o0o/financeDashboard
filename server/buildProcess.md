@@ -276,8 +276,27 @@ docker: <https://www.docker.com/products/docker-desktop/>
    1) Create {data.js} in data folder
    2) Copy all datas from EdRoh's raw datas to {data.js}
    3) See concepts database link : <https://lucid.app/lucidchart/23d63d3a-f89c-472d-99d3-4c0a35c67816/edit?invitationId=inv_863ef5c2-6c3d-42ec-85da-c522ddb15430&page=0_0#>
-   4) Import datas from routes path : kpiRoutes, productRoutes, transactionRoutes
-   5) Import models as : KPI, Product, Transaction
-   6) Import raw data from {data.js} as : kpis, products, transactions
-   7) Toggle KPIs taq on to upload data --> Save index.js --> Toggle KPIs taq off
+
+   <!-- Setup KPIs data for dashboard rendering -->
+   1) Import kpi route in {index.js} in server folder as : kpiRoutes
+   2) Create routes folder in server folder
+   3) Create {kpi.js} file in routes folder then configurate kpi route
+      1) Import express from express and KPI from models
+      2) Create callBack function to monitoring connecting status
+   4) Create models folder in server folder
+   5) Create {KPI.js}file in models folder
+      1) Import mongoose for create kpis schema
+      2) Import loadType for mongoose-currency
+      3) Create schema for kpis as : daySchema, monthSchema, KPISchema
+      4) Export KPI
+   6) In {index.js} in server folder import models as : KPI
+   7) In {index.js} in server folder import raw data from {data.js} as : kpis
+
+   <!-- 4) In {index.js} in server folder import datas from routes path : kpiRoutes, productRoutes, transactionRoutes
+   8) In {index.js} in server folder import models as : KPI, Product, Transaction
+   9)  In {index.js} in server folder import raw data from {data.js} as : kpis, products, transactions -->
+
+## Setup dashboard element
+
+   1) Toggle KPIs taq on to upload data --> Save index.js --> Toggle KPIs taq off
    ***Upload data must do one time then have to marks as note**

@@ -9,12 +9,12 @@ import morgan from "morgan";
 
 // Setup 02 : Import dashboard data and function with KPI, Products, Transactions
 import kpiRoutes from "./routes/kpi.js";
-import productRoutes from "./routes/product.js";
-import transactionRoutes from "./routes/transaction.js";
+// import productRoutes from "./routes/product.js";
+// import transactionRoutes from "./routes/transaction.js";
 import KPI from "./models/KPI.js";
-import Product from "./models/Product.js";
-import Transaction from "./models/Transaction.js";
-import { kpis, products, transactions } from "./data/data.js";
+// import Product from "./models/Product.js";
+// import Transaction from "./models/Transaction.js";
+// import { kpis, products, transactions } from "./data/data.js";
 
 /* Setup 01 :CONFIGURATIONS */
 dotenv.config();
@@ -34,7 +34,7 @@ app.use(cors());
 
 // Setup 02 :
 // /* ROUTES */
-// app.use("/kpi", kpiRoutes);
+app.use("/kpi", kpiRoutes);
 // app.use("/product", productRoutes);
 // app.use("/transaction", transactionRoutes);
 
