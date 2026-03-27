@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time : 02:15:15 /5:23:37
+Last building time : 02:37:26 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -310,4 +310,26 @@ docker: <https://www.docker.com/products/docker-desktop/>
    5) Run client again : npm run dev
    6) Go to example tab and select "SimpleAreaChart" and copy taq : ResponsiveContainer or AreaChart
    7) Place them in {Row1.tsx} file between DashboardBox taq of gridArea "a"
-   8) Import recharts tools
+   8) Import recharts tools as : ResponsiveContainer, AreaChart, CartesianGrid, XAxis, YAxis, Tooltip, Area
+   9) Adding ResponsiveContainer and AreaChart taq in return function
+   10) Adding revenueExpenses getData from database
+   11) Changing getKpis taq in {api.ts} from build.query as (void,void) to be Array(GetKpisResponse,void)
+   12) Create {types.ts} in state folder setup interface as : ExpensesByCategory, Month, Day, GetKpisResponse
+   13) In {api.ts} file import GetKpisResponse
+   14) In {Row1.tsx} file change value from data={data} to data={revenueExpenses} in AreaChart<> taq
+   ***Server error cannot access database mongoDB atlas from IP adress isn't whitelisted**
+   ***Solve by : Go to mongoDB atlas then whitlist IP address**
+   15) In {Row1.tsx} file change value from dataKey="uv" to dataKey="revenue"
+   16) In {Row1.tsx} Indentify palette before const {data} with : const {palette} = useTheme()
+   17) Import useTheme from @mui/material
+   18) In {Row1.tsx} file change value from stroke="#8884d8" to stroke={palette.primary.main}
+   19) In {Row1.tsx} Adding fillOpacity as before fill: 1
+   20) In {Row1.tsx} file change value from fill="#8884d8" to fill="url(#colorRevenue)"
+   21) In {Row1.tsx} adding dot taq after datakey as : dot={true}
+   22) In {ROw1.tsx} repeat format area taq in dataKey from reveneu to expenses as dataKey="expenses"
+   23) In {ROw1.tsx} in expense area taq then change fill="url(#colorRevenue)" to fill="url(#colorExpenses)"
+   24) In {Row1.tsx} in expense area taq adding dot taq after datakey as : dot={true}
+   25) In {Row1.tsx} in XAxis taq cancel tickline as : tickLine={false}
+   26) In {Row1.tsx} in XAxis taq styling as : style={{fontSize:"10px"}}
+
+
