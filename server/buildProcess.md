@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time : 02:37:26 /5:23:37
+Last building time : 02:47:35 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -362,4 +362,5 @@ docker: <https://www.docker.com/products/docker-desktop/>
    7) Create return value as : FlexBetween, Typography and Styling
    8) Export boxHeader
    9) In {Row1.tsx} file import BoxHeader
-   10) Adding BoxHeader above ResponsiveContainer taq
+   10) Adding BoxHeader above ResponsiveContainer taqs
+       1) Setup title, subtitle, sideText
