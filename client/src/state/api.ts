@@ -1,20 +1,26 @@
 // Setup 01 : Render KPIs
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { GetKpisResponse } from "./types";
+import { GetKpisResponse, GetProductsResponse, } from "./types";
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_URL }),
   reducerPath: "main",
-  tagTypes: ["Kpis", "Products", "Transactions"],
+  tagTypes: ["Kpis", "Products"],
   endpoints: (build) => ({
     // Calling data from KPIs to VITE_BASE_URL local page <void, void> mean cancel argument now
         getKpis: build.query<Array<GetKpisResponse>,void>({
         query: () => "kpi/kpis/",
         providesTags: ["Kpis"],
         }),
+
+    // Calling data from Products to VITE_BASE_URL local page
+        getProducts: build.query<Array<GetProductsResponse>, void>({
+          query: () => "product/products/",
+          providesTags: ["Products"],
+        }),
     })
 })
-export const {useGetKpisQuery} = api;
+export const {useGetKpisQuery, useGetProductsQuery} = api;
 
 
 // Setup 02 : Complete Render KPIs Products Transactions

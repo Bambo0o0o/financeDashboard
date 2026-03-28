@@ -103,11 +103,11 @@ docker: <https://www.docker.com/products/docker-desktop/>
 10) In {index.css} add "inter" font from google fonts : @import url (...)
 11) Setup {index.css} with style : html, body, #root, .app{...}
 12) Setup eslint package : npm i -D eslint eslint-config-react-app
-13) Create {eslintrc.json} in client folder then adding taq : "extends":"react-app"
+13) Create {eslintrc.json} in client folder then adding tag : "extends":"react-app"
 14) Go to {App.tsx} checking eslint working fine by : build function as hello(); over return funtion we will see "underline-red-mark" show that this fuction not found in our application
     ***Eslint will help us to alert event abnormally by : Red-wavy-line***
-15) Create environment local file {.env.local} then adding taq : VITE_BASE_URL : ....
-16) Go to {tsconfig.json} file then adding taq(Let's us use URL in {.env.local} file) at the end as : "types":["vite/client"]
+15) Create environment local file {.env.local} then adding tag : VITE_BASE_URL : ....
+16) Go to {tsconfig.json} file then adding tag(Let's us use URL in {.env.local} file) at the end as : "types":["vite/client"]
      <!-- Import import method by using @/dir instead of traditional method ../../dir -->
 17) To improve import method to be better way by from "../../../ to be @/" instead : npm i -D @types/node
     1) Go to {vit.config.ts} file import path and adding : resolve: {alias:[{find:"@",replacement:path.resolve(__dirname,"src")}]}
@@ -128,7 +128,7 @@ docker: <https://www.docker.com/products/docker-desktop/>
 4) Create {expanded-theme.ts} file to expnaded palette color in src folder
    1) Setup interface PaletteColor{} and interface Palette{}
 5) Go to {App.tsx} in src folder using themeSetting{} function by adding :useMemo as themeSetting
-6) Setup taqs : ThemeProvider and CssBaseline
+6) Setup tags : ThemeProvider and CssBaseline
 7) Frontend run apps : npm run dev
 8) To check work fine "ctrl+ click" on : <http://localhost:5173/>
    ***This process works fine with black background color and wording as "Hello This is a First app run"***
@@ -157,7 +157,7 @@ docker: <https://www.docker.com/products/docker-desktop/>
    7) Setup Left navbar in {index.tsx} file in navbar folder
       1) Using FlexBetween to layout : Icon and Page name
       2) Setup icon with Pix : <https://mui.com/material-ui/material-icons/?query=pi>
-      3) Place PixIcon taq and decorative with fontSize as 28px
+      3) Place PixIcon tag and decorative with fontSize as 28px
       4) Create Page name as "finDashboard" with Typography
    8) Setup Right navbar in {index.tsx} file in navbar folder
       1) Using FlexBetween to layout : Dashboard and Predictions buttons
@@ -196,7 +196,7 @@ docker: <https://www.docker.com/products/docker-desktop/>
           - (Box) bgcolor="#fff" gridArea="j" (/Box)
 
    8) Create Styling for Grid elements as : DashboardBox
-      1) Using DashboardBox instead of Box taq on each grid
+      1) Using DashboardBox instead of Box tag on each grid
           - (DashboardBox) bgcolor="#fff" gridArea="a" (/DashboardBox)
           - ...
           - (DashboardBox) bgcolor="#fff" gridArea="j" (/DashboardBox)
@@ -206,7 +206,7 @@ docker: <https://www.docker.com/products/docker-desktop/>
          1) Rows1 adding elements : "a", "b", "c"
          2) Rows2 adding elements : "d", "e", "f"
          3) Rows3 adding elements : "g", "h", "i", "j"
-      3) Go to {index.tsx} in scenes/dashboard folder Adding taq as : (Row1/), (Row2/), (Row3/)
+      3) Go to {index.tsx} in scenes/dashboard folder Adding tag as : (Row1/), (Row2/), (Row3/)
 4) Create {api.tsx} in src/state folder
    1) Setup baseQuery as : getKpis, getProducts, getTransactions
    2) Setup baseURL to render data as : import.meta.env.VITE_BASE_URL
@@ -272,7 +272,7 @@ docker: <https://www.docker.com/products/docker-desktop/>
    1) Setup connection as : mongoose.connect(process.env.MONGO_URL, {})
    2) Seteup callBack function to check port connect : app.listen(PORT, () => console.log(`Server Port: ${PORT}`))
    3) Setup catch error event : .catch((error) => console.log(`${error} did not connect`))
-4) Create {.gitignore} file in server folder then adding taqs as :
+4) Create {.gitignore} file in server folder then adding tags as :
       - .env
       - node_modules
 5) Create data folder in server folder
@@ -329,8 +329,8 @@ docker: <https://www.docker.com/products/docker-desktop/>
       8) Export KPI schema
    6) In {index.js} in server folder import models as : KPI
    7) In {index.js} in server folder import raw data from {data.js} as : kpis
-   8) Toggle dropDatabase taq on to upload data --> Save index.js --> Toggle dropDatabase taq off
-   9) Toggle KPIs taq on to upload data --> Save index.js --> Toggle KPIs taq off
+   8) Toggle dropDatabase tag on to upload data --> Save index.js --> Toggle dropDatabase tag off
+   9) Toggle KPIs tag on to upload data --> Save index.js --> Toggle KPIs tag off
    ***Upload data must do one time then have to marks as note : 02:15:15**
 
    <!-- Frontend setup -->
@@ -339,15 +339,15 @@ docker: <https://www.docker.com/products/docker-desktop/>
    3) Go to rechart which is chart library : <https://recharts.github.io/?p=/en-US/>
    4) Install rechart to our client folder : npm install recharts
    5) Run client again : npm run dev
-   6) Go to example tab and select "SimpleAreaChart" and copy taq : ResponsiveContainer or AreaChart
-   7) Place them in {Row1.tsx} file between DashboardBox taq of gridArea "a"
+   6) Go to example tab and select "SimpleAreaChart" and copy tag : ResponsiveContainer or AreaChart
+   7) Place them in {Row1.tsx} file between DashboardBox tag of gridArea "a"
    8) Import recharts tools as : ResponsiveContainer, AreaChart, CartesianGrid, XAxis, YAxis, Tooltip, Area
-   9) Adding ResponsiveContainer and AreaChart taq in return function
+   9) Adding ResponsiveContainer and AreaChart tag in return function
    10) Adding revenueExpenses getData from database
-   11) Changing getKpis taq in {api.ts} from build.query as (void,void) to be Array(GetKpisResponse,void)
+   11) Changing getKpis tag in {api.ts} from build.query as (void,void) to be Array(GetKpisResponse,void)
    12) Create {types.ts} in state folder setup interface as : ExpensesByCategory, Month, Day, GetKpisResponse
    13) In {api.ts} file import GetKpisResponse
-   14) In {Row1.tsx} file change value from data={data} to data={revenueExpenses} in AreaChart<> taq
+   14) In {Row1.tsx} file change value from data={data} to data={revenueExpenses} in AreaChart<> tag
    ***Server error cannot access database mongoDB atlas from IP adress isn't whitelisted**
    ***Solve by : Go to mongoDB atlas then whitlist IP address**
 
@@ -361,27 +361,27 @@ docker: <https://www.docker.com/products/docker-desktop/>
    4) In {Row1.tsx} file change value from stroke="#8884d8" to stroke={palette.primary.main}
    5) In {Row1.tsx} Adding fillOpacity as before fill: 1
    6) In {Row1.tsx} file change value from fill="#8884d8" to fill="url(#colorRevenue)"
-   7) In {Row1.tsx} adding dot taq after datakey as : dot={true}
+   7) In {Row1.tsx} adding dot tag after datakey as : dot={true}
 
 #### Setup Expenses area graph(KPIs dash board)
 
-   1) In {ROw1.tsx} repeat format area taq in dataKey from reveneu to expenses as dataKey="expenses"
+   1) In {ROw1.tsx} repeat format area tag in dataKey from reveneu to expenses as dataKey="expenses"
    2) In {ROw1.tsx} in expense area then change fill="url(#colorRevenue)" to fill="url(#colorExpenses)"
-   3) In {Row1.tsx} in expense area taq adding dot taq after datakey as : dot={true}
+   3) In {Row1.tsx} in expense area tag adding dot tag after datakey as : dot={true}
 
 #### Setup XAxis and YAxis and Setup fading area under graph
 
-   1) In {Row1.tsx} in XAxis taq cancel tickline as : tickLine={false}
-   2) In {Row1.tsx} in XAxis taq styling as : style={{fontSize:"10px"}}
-   3) In {Row1.tsx} in XAxis taq datakey name must change "Name" to be "name"
-   4) In {Row1.tsx} in YAxis copy taq same XAxis to YAxis then
-      1) Delete datakey taq
+   1) In {Row1.tsx} in XAxis tag cancel tickline as : tickLine={false}
+   2) In {Row1.tsx} in XAxis tag styling as : style={{fontSize:"10px"}}
+   3) In {Row1.tsx} in XAxis tag datakey name must change "Name" to be "name"
+   4) In {Row1.tsx} in YAxis copy tag same XAxis to YAxis then
+      1) Delete datakey tag
       2) Adding axisLine as : strokeWidth "0"
       3) Adjusting YAxis gap value as domain(between value) : 8000,23000
-      4) Deleting Catesian taq as : CartesianGrid strokeDasharray
+      4) Deleting Catesian tag as : CartesianGrid strokeDasharray
    5) Adding Fading(Shaded) under graph area by
-      1) Adding defs taq above XAxis taq
-      2) Adding linearGradient taq and setup Fading(Shaded) for colorRevenue and colorExpenses as : offset, stopColor, stopOpacity
+      1) Adding defs tag above XAxis tag
+      2) Adding linearGradient tag and setup Fading(Shaded) for colorRevenue and colorExpenses as : offset, stopColor, stopOpacity
    6) Custromize graph margins as : top 15, right 25, left -10, bottom 60,
 
 #### Setup Header and Title
@@ -395,55 +395,55 @@ docker: <https://www.docker.com/products/docker-desktop/>
    7) Create return value as : FlexBetween, Typography and Styling
    8) Export boxHeader
    9) In {Row1.tsx} file import BoxHeader
-   10) Adding BoxHeader above ResponsiveContainer taqs
+   10) Adding BoxHeader above ResponsiveContainer tags
        1) Setup title, subtitle, sideText
 
 ## Setup Profit and Revenue Row1Column2
 
-### Setup modified taq from revenue-expenses to be Profit-Revenue using : Biaxial Line Chart
+### Setup modified tag from revenue-expenses to be Profit-Revenue using : Biaxial Line Chart
 
 1) Go to Recharts with Biaxial Line Chart as : <https://recharts.github.io/en-US/examples/BiaxialLineChart/>
-2) In {Row1.tsx} file copy setup revenue and expenses in </DashboardBox gridArea="a"> taq
+2) In {Row1.tsx} file copy setup revenue and expenses in </DashboardBox gridArea="a"> tag
 3) Place setup in </DashboardBox gridArea="b">
-4) Change "Area" taq to be "Line" taq in AreaChart taq
+4) Change "Area" tag to be "Line" tag in AreaChart tag
 5) Kept XAxis setup to be the same as before
 6) Modify YAxis as
    1) Adding yAxisID as : "left"
    2) Modify axisLine as : false
-   3) Delete domain taq
+   3) Delete domain tag
    4) Duplicate YAxis below left and set as " right
    5) Setup orientation to be "right"
 7) Import Line to recharts
-8) Delete defs taq and inside there
-9) Adding CartesianGrid taq above XAxis taq then setup : vertical and stroke
-10) Clearing taq in first Line taq and adding "yAxisID" as : left
-11) In first Line taq adding type as : monotone
-12) In first Line taq adding dataKey as : profit
-13) In first Line taq adding stroke as : palette.teriary[500]
-14) Copy taqs from first Line to second Line and modify as 
+8) Delete defs tag and inside there
+9) Adding CartesianGrid tag above XAxis tag then setup : vertical and stroke
+10) Clearing tag in first Line tag and adding "yAxisID" as : left
+11) In first Line tag adding type as : monotone
+12) In first Line tag adding dataKey as : profit
+13) In first Line tag adding stroke as : palette.teriary[500]
+14) Copy tags from first Line to second Line and modify as 
     1) Change yAxisId "left" to be "right"
     2) Change dataKey "profit" to be "revenue"
     3) Change stroke to be : palette.primary.main
-15) Adding Legend taq above first Line taq then setup : height, wrapperStyle, margin
+15) Adding Legend tag above first Line tag then setup : height, wrapperStyle, margin
 16) Import Legend to recharts
 17) In AreaChart remove width and height
-18) Changing AreaChart taq to be LineChart taq
-19) Changing source of data from mongoDB on data taq from "revenueExpense" to be revenueProfit
+18) Changing AreaChart tag to be LineChart tag
+19) Changing source of data from mongoDB on data tag from "revenueExpense" to be revenueProfit
 20) Modify margin to be : top 20, right 0,left -10,bottom 55
 21) Fetching data from mongoDB to our chart by
     1) Copy "revenueExpense" callBack function and change name to "revenueProfit"
-    2) Change return taq from "expenses" to "profit"
+    2) Change return tag from "expenses" to "profit"
     3) Change value from "expenses" to "revenue-expenses"
     4) Setup digit math for revenue-expense to be 2 digit by .toFixed(2) as : profit: (revenue - expenses).toFixed(2)
 
 ## Setup Revenue Month by Month Row1Column3
 
-### Setup modified taq from revenue-expenses to be Revenue Month by Month using : Simple Bar Chart
+### Setup modified tag from revenue-expenses to be Revenue Month by Month using : Simple Bar Chart
 
 1) Go to Recharts with Simple Bar Chart as : <https://recharts.github.io/en-US/examples/SimpleBarChart/>
    <!-- All here working in {Row1.tsx} -->
-2) Copy code in return taq to our {Row1.tsx} as : BarChart
-3) Copy BoxHeader and place above Barchart taq
+2) Copy code in return tag to our {Row1.tsx} as : BarChart
+3) Copy BoxHeader and place above Barchart tag
 4) Change title as : Revenue Month by Month
 5) Cange sutitle as : graph representing the revenue month by month
 6) Adding more import to Recharts as : BarChart, Bar
@@ -452,15 +452,15 @@ docker: <https://www.docker.com/products/docker-desktop/>
 9) Change CartesianGrid to be : vertical={false} stroke={palette.grey[800]}
 10) Setup XAxis by adding : dataKey, axisLine, tickLine, style
 11) Setup YAxis by adding : axisLine, tickLine, style
-12) Delete Legend taq
-13) Keep only one Bar taq then
+12) Delete Legend tag
+13) Keep only one Bar tag then
     1) Change dataKey to be : "revenue"
-    2) Adding defs taq above above CartesianGrid
-    3) Copy linearGradient(Revenue) from revenue-expenses chart then place in defs taq
-    4) In Bar taq change fill value to be : "url(#colorRevenue)"
+    2) Adding defs tag above above CartesianGrid
+    3) Copy linearGradient(Revenue) from revenue-expenses chart then place in defs tag
+    4) In Bar tag change fill value to be : "url(#colorRevenue)"
 14) Copy callBack function "revenueExpenses() and place above revenueExpenses()
     1) Change name to "revenue"
-    2) Delete expense in return taq
+    2) Delete expense in return tag
 
 ***Remind tools : Nivo charts will setup one environtment then reuseable to others charts***
 ***But Recharts have to setup own environment on every charts***
@@ -493,8 +493,8 @@ docker: <https://www.docker.com/products/docker-desktop/>
       1) Change totalProfit to be price(This is currency)
       2) Change totalRevenue to be expense(This is currency)
       3) Change totalExpense to be transactions(This is array) : Move all and place inside []
-      4) In transactions taq change "type" as ==> type: mongoose.Schema.Types.ObjectId
-      5) In transactions taq delete other then add "ref" as ==> ref: "Transaction"
+      4) In transactions tag change "type" as ==> type: mongoose.Schema.Types.ObjectId
+      5) In transactions tag delete other then add "ref" as ==> ref: "Transaction"
 
 4) Create {Transaction.js} in models folder (Is command to upload data from {data.js} to MongoDB)
    1) Copy code from {Product.js} file in models folder to {Transaction.js} file
@@ -506,11 +506,21 @@ docker: <https://www.docker.com/products/docker-desktop/>
       1) Change price to be buyer(This is string)
       2) Change expense to be amount(This is currency)
       3) Change transactions to be productIds(This is array) : Move all and place inside []
-      4) In productIds taq keep "type" as ==> type: mongoose.Schema.Types.ObjectId
-      5) In productIds taq change "ref" value as ==> ref: "Product"
+      4) In productIds tag keep "type" as ==> type: mongoose.Schema.Types.ObjectId
+      5) In productIds tag change "ref" value as ==> ref: "Product"
    ***Observation : Transaction and Product are referenced together by ObjectId as this Structure : <https://lucid.app/lucidchart/23d63d3a-f89c-472d-99d3-4c0a35c67816/edit?page=0_0#>***
 
 5) Adding "products" to import data as : import { kpis, products } from "./data/data.js"
 6) Upload Products to MongoDB "onetime" as : Product.insertMany(products)
-7) Toggle "Product.insertMany" taq on to upload data --> Save index.js --> Toggle Products taq off
+7) Toggle "Product.insertMany" tag on to upload data --> Save index.js --> Toggle Products tag off
    ***Upload data must do one time then have to marks as note : 03:12:15**
+
+## Back to Frontend setup for Dashbord Row2 : Products
+
+<!-- Frontend setup -->
+1) Go to {api.js} file in /client/src/state folder
+2) In tagTypes tag adding : "Products"
+3) In endpoints callBack function adding :  getProducts: build.query()
+4) Adding "GetProductsResponse" to import /types
+5) Export "useGetProductsQuery"
+6) In {types.ts} file setup GetProductsResponse schema as : id, _id, __v, price, expense, transactions, createdAt, updatedAt

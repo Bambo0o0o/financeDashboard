@@ -35,19 +35,19 @@ export interface GetKpisResponse {
   updatedAt: string;
 }
 
-// Setup 02 : GetProductsResponse
-// export interface GetProductsResponse {
-//   id: string;
-//   _id: string;
-//   __v: number;
-//   price: number;
-//   expense: number;
-//   transactions: Array<string>;
-//   createdAt: string;
-//   updatedAt: string;
-// }
+//Setup 02 : GetProductsResponse
+export interface GetProductsResponse {
+  id: string;
+  _id: string;
+  __v: number;
+  price: number;
+  expense: number;
+  transactions: Array<string>;
+  createdAt: string;
+  updatedAt: string;
+}
 
-// Setup 02 : GetProductsResponse
+// Setup 03 : GetProductsResponse
 // export interface GetTransactionsResponse {
 //   id: string;
 //   _id: string;
