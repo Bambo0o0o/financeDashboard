@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time : 02:57:00 /5:23:37
+Last building time : 03:10:25 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -278,7 +278,7 @@ docker: <https://www.docker.com/products/docker-desktop/>
 5) Create data folder in server folder
    1) Create {data.js} in data folder
    2) Copy all datas from EdRoh's raw datas to {data.js}
-   3) See concepts database link : <https://lucid.app/lucidchart/23d63d3a-f89c-472d-99d3-4c0a35c67816/edit?invitationId=inv_863ef5c2-6c3d-42ec-85da-c522ddb15430&page=0_0#>
+   3) See concepts database link : <https://lucid.app/lucidchart/23d63d3a-f89c-472d-99d3-4c0a35c67816/edit?page=0_0#>
 
 ## Template Recharts(Reuseable)
 
@@ -464,3 +464,53 @@ docker: <https://www.docker.com/products/docker-desktop/>
 
 ***Remind tools : Nivo charts will setup one environtment then reuseable to others charts***
 ***But Recharts have to setup own environment on every charts***
+
+## Back to Backend setup for Dashbord Row2 : Products
+
+<!-- Backend setup -->
+1) Setup {index.js} file in server folder
+   1) Adding productRoutes as : app.use("/product", productRoutes)
+   2) Import productRoutes from /routes/product.js
+   3) Import product from /models/product.js
+
+2) Create {product.js} file in routes folder
+   1) Copy code from {kpi.js} in routes folder to {product.js} file
+   2) Keep import express and product
+   3) Create express Router as : express.Router()
+   4) Change name router from "/kpis" to be "/products"
+   5) Change find function from KPI to : Product.find()
+   6) Keep callBack function to fetch data from MongoDB database as : router.get("/products", async (req, res) => {}
+   7) Keep catch up status for : 200 and 400
+
+3) Create {Product.js} file in models folder (Is command to upload data from {data.js} to MongoDB)
+   1) Copy code from {KPI.js} file in models folder to {Product.js} file
+   2) Keep import mongoose and loadType
+   3) Keep only KPISchema then delete month and day schemas
+   4) Change name KPISchema to be ProductSchema
+   5) Change export KPI to be Product
+   6) Change const KPI name to Product name as : mongoose.model("Product", ProductSchema)
+   7) Delete other schemas and setup here
+      1) Change totalProfit to be price(This is currency)
+      2) Change totalRevenue to be expense(This is currency)
+      3) Change totalExpense to be transactions(This is array) : Move all and place inside []
+      4) In transactions taq change "type" as ==> type: mongoose.Schema.Types.ObjectId
+      5) In transactions taq delete other then add "ref" as ==> ref: "Transaction"
+
+4) Create {Transaction.js} in models folder (Is command to upload data from {data.js} to MongoDB)
+   1) Copy code from {Product.js} file in models folder to {Transaction.js} file
+   2) Keep import mongoose and loadType
+   3) Change name ProductSchema to be TransactionSchema
+   4) Change export Product to be Transaction
+   5) Change const Product name to Transaction name as : mongoose.model("Transaction", TransactionSchema)
+   6) Change schema elements as
+      1) Change price to be buyer(This is string)
+      2) Change expense to be amount(This is currency)
+      3) Change transactions to be productIds(This is array) : Move all and place inside []
+      4) In productIds taq keep "type" as ==> type: mongoose.Schema.Types.ObjectId
+      5) In productIds taq change "ref" value as ==> ref: "Product"
+   ***Observation : Transaction and Product are referenced together by ObjectId as this Structure : <https://lucid.app/lucidchart/23d63d3a-f89c-472d-99d3-4c0a35c67816/edit?page=0_0#>***
+
+5) Adding "products" to import data as : import { kpis, products } from "./data/data.js"
+6) Upload Products to MongoDB "onetime" as : Product.insertMany(products)
+7) Toggle "Product.insertMany" taq on to upload data --> Save index.js --> Toggle Products taq off
+   ***Upload data must do one time then have to marks as note : 03:12:15**

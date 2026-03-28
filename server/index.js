@@ -9,12 +9,15 @@ import morgan from "morgan";
 
 // Setup 02 : Import dashboard data and function with KPI
 import kpiRoutes from "./routes/kpi.js";
-import KPI from "./models/KPI.js";
-import { kpis } from "./data/data.js";
+import KPI from "./models/KPI.js";                      // One time used
+// import { kpis } from "./data/data.js";
 
-// import productRoutes from "./routes/product.js";
+// Setup 03 : Import product to dashboard
+import productRoutes from "./routes/product.js";
+import Product from "./models/Product.js";              // One time used
+import { kpis, products } from "./data/data.js";
+
 // import transactionRoutes from "./routes/transaction.js";
-// import Product from "./models/Product.js";
 // import Transaction from "./models/Transaction.js";
 // import { kpis, products, transactions } from "./data/data.js";
 
@@ -34,10 +37,11 @@ app.use(cors());
 // console.log("Server run")
 
 
-// Setup 02 : kpi, product, transaction
+// Setup 02 : kpi
 // /* ROUTES */
 app.use("/kpi", kpiRoutes);
-// app.use("/product", productRoutes);
+// Setup 03 : product
+app.use("/product", productRoutes);
 // app.use("/transaction", transactionRoutes);
 
 
@@ -54,7 +58,7 @@ mongoose
     /* ADD DATA ONE TIME ONLY OR AS NEEDED */
     // await mongoose.connection.db.dropDatabase();     // Add 01
     // KPI.insertMany(kpis);                            // Add 02
-    // Product.insertMany(products);
+    // Product.insertMany(products);                    // Add 03
     // Transaction.insertMany(transactions);
   })
   .catch((error) => console.log(`${error} did not connect`));
