@@ -10,6 +10,8 @@ myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
 2) Run client : npm run dev
 3) Run server :  npm run dev
 4) Turn on console.log() by highlight word : ctrl + alt + l
+5) Move multiple lines left (outdent) : Shift + Tab
+6) Move multiple lines right (indent) : Tab
 
 <!-- myGitHub -->
 echo "# financeDashboard" >> README.md
@@ -278,6 +280,35 @@ docker: <https://www.docker.com/products/docker-desktop/>
    2) Copy all datas from EdRoh's raw datas to {data.js}
    3) See concepts database link : <https://lucid.app/lucidchart/23d63d3a-f89c-472d-99d3-4c0a35c67816/edit?invitationId=inv_863ef5c2-6c3d-42ec-85da-c522ddb15430&page=0_0#>
 
+## Template Recharts(Reuseable)
+
+      <ResponsiveContainer width="100%" height="100%">
+        <BoxHeader
+          title="Revenue Month by Month"
+          subtitle="graph representing the revenue month by month"
+          sideText="+4%"
+        />
+        <BarChart
+          width={500}
+          height={300}
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+        }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis/>
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="pv" fill="#8884d8" />
+          <Bar dataKey="uv" fill="#82ca9d" />
+        </BarChart>
+      </ResponsiveContainer>
+
 ## Setup KPIs dashboard
 
    <!-- Backend setup -->
@@ -332,13 +363,13 @@ docker: <https://www.docker.com/products/docker-desktop/>
    6) In {Row1.tsx} file change value from fill="#8884d8" to fill="url(#colorRevenue)"
    7) In {Row1.tsx} adding dot taq after datakey as : dot={true}
 
-### Setup Expenses area graph(KPIs dash board)
+#### Setup Expenses area graph(KPIs dash board)
 
    1) In {ROw1.tsx} repeat format area taq in dataKey from reveneu to expenses as dataKey="expenses"
    2) In {ROw1.tsx} in expense area then change fill="url(#colorRevenue)" to fill="url(#colorExpenses)"
    3) In {Row1.tsx} in expense area taq adding dot taq after datakey as : dot={true}
 
-### Setup XAxis and YAxis and Setup fading area under graph
+#### Setup XAxis and YAxis and Setup fading area under graph
 
    1) In {Row1.tsx} in XAxis taq cancel tickline as : tickLine={false}
    2) In {Row1.tsx} in XAxis taq styling as : style={{fontSize:"10px"}}
@@ -353,7 +384,7 @@ docker: <https://www.docker.com/products/docker-desktop/>
       2) Adding linearGradient taq and setup Fading(Shaded) for colorRevenue and colorExpenses as : offset, stopColor, stopOpacity
    6) Custromize graph margins as : top 15, right 25, left -10, bottom 60,
 
-### Setup Header and Title
+#### Setup Header and Title
 
    1) Create {BoxHeader.tsx} in components folder
    2) Using template as : tsrafce
@@ -403,6 +434,33 @@ docker: <https://www.docker.com/products/docker-desktop/>
     1) Copy "revenueExpense" callBack function and change name to "revenueProfit"
     2) Change return taq from "expenses" to "profit"
     3) Change value from "expenses" to "revenue-expenses"
-    4) Setup digit math for revenue-expense to be 3 digit by .toFixed(3) as : profit: (revenue - expenses).toFixed(3)
+    4) Setup digit math for revenue-expense to be 2 digit by .toFixed(2) as : profit: (revenue - expenses).toFixed(2)
 
-### Setup modified taq from revenue-expenses to be Profit-Revenue using : Biaxial Line Char
+## Setup Revenue Month by Month Row1Column3
+
+### Setup modified taq from revenue-expenses to be Revenue Month by Month using : Simple Bar Chart
+
+1) Go to Recharts with Simple Bar Chart as : <https://recharts.github.io/en-US/examples/SimpleBarChart/>
+   <!-- All here working in {Row1.tsx} -->
+2) Copy code in return taq to our {Row1.tsx} as : BarChart
+3) Copy BoxHeader and place above Barchart taq
+4) Change title as : Revenue Month by Month
+5) Cange sutitle as : graph representing the revenue month by month
+6) Adding more import to Recharts as : BarChart, Bar
+7) Change margin to be : : top 17, right 15,left -5,bottom 58
+8) Fetch data from mongoDB to chart by change data value as : data={revenue}
+9) Change CartesianGrid to be : vertical={false} stroke={palette.grey[800]}
+10) Setup XAxis by adding : dataKey, axisLine, tickLine, style
+11) Setup YAxis by adding : axisLine, tickLine, style
+12) Delete Legend taq
+13) Keep only one Bar taq then
+    1) Change dataKey to be : "revenue"
+    2) Adding defs taq above above CartesianGrid
+    3) Copy linearGradient(Revenue) from revenue-expenses chart then place in defs taq
+    4) In Bar taq change fill value to be : "url(#colorRevenue)"
+14) Copy callBack function "revenueExpenses() and place above revenueExpenses()
+    1) Change name to "revenue"
+    2) Delete expense in return taq
+
+***Remind tools : Nivo charts will setup one environtment then reuseable to others charts***
+***But Recharts have to setup own environment on every charts***
