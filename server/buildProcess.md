@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time : 02:47:35 /5:23:37
+Last building time : 02:57:00 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -320,6 +320,8 @@ docker: <https://www.docker.com/products/docker-desktop/>
    ***Server error cannot access database mongoDB atlas from IP adress isn't whitelisted**
    ***Solve by : Go to mongoDB atlas then whitlist IP address**
 
+## Setup Revenue and Expenses Row1Column1
+
 ### Setup Revenue area graph(KPIs dash board)
 
    1) In {Row1.tsx} file change value from dataKey="uv" to dataKey="revenue"
@@ -364,3 +366,43 @@ docker: <https://www.docker.com/products/docker-desktop/>
    9) In {Row1.tsx} file import BoxHeader
    10) Adding BoxHeader above ResponsiveContainer taqs
        1) Setup title, subtitle, sideText
+
+## Setup Profit and Revenue Row1Column2
+
+### Setup modified taq from revenue-expenses to be Profit-Revenue using : Biaxial Line Chart
+
+1) Go to Recharts with Biaxial Line Chart as : <https://recharts.github.io/en-US/examples/BiaxialLineChart/>
+2) In {Row1.tsx} file copy setup revenue and expenses in </DashboardBox gridArea="a"> taq
+3) Place setup in </DashboardBox gridArea="b">
+4) Change "Area" taq to be "Line" taq in AreaChart taq
+5) Kept XAxis setup to be the same as before
+6) Modify YAxis as
+   1) Adding yAxisID as : "left"
+   2) Modify axisLine as : false
+   3) Delete domain taq
+   4) Duplicate YAxis below left and set as " right
+   5) Setup orientation to be "right"
+7) Import Line to recharts
+8) Delete defs taq and inside there
+9) Adding CartesianGrid taq above XAxis taq then setup : vertical and stroke
+10) Clearing taq in first Line taq and adding "yAxisID" as : left
+11) In first Line taq adding type as : monotone
+12) In first Line taq adding dataKey as : profit
+13) In first Line taq adding stroke as : palette.teriary[500]
+14) Copy taqs from first Line to second Line and modify as 
+    1) Change yAxisId "left" to be "right"
+    2) Change dataKey "profit" to be "revenue"
+    3) Change stroke to be : palette.primary.main
+15) Adding Legend taq above first Line taq then setup : height, wrapperStyle, margin
+16) Import Legend to recharts
+17) In AreaChart remove width and height
+18) Changing AreaChart taq to be LineChart taq
+19) Changing source of data from mongoDB on data taq from "revenueExpense" to be revenueProfit
+20) Modify margin to be : top 20, right 0,left -10,bottom 55
+21) Fetching data from mongoDB to our chart by
+    1) Copy "revenueExpense" callBack function and change name to "revenueProfit"
+    2) Change return taq from "expenses" to "profit"
+    3) Change value from "expenses" to "revenue-expenses"
+    4) Setup digit math for revenue-expense to be 3 digit by .toFixed(3) as : profit: (revenue - expenses).toFixed(3)
+
+### Setup modified taq from revenue-expenses to be Profit-Revenue using : Biaxial Line Char

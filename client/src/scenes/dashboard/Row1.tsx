@@ -3,7 +3,17 @@ import DashboardBox from "@/components/DashboardBox"
 import {useGetKpisQuery} from "@/state/api"
 
 // Setup 02 : Setup recharts components
-import {ResponsiveContainer, AreaChart, CartesianGrid, XAxis, YAxis, Tooltip, Area} from "recharts"
+import {ResponsiveContainer, 
+        AreaChart, 
+        CartesianGrid, 
+        XAxis, 
+        YAxis, 
+        Legend, 
+        Tooltip, 
+        Area, 
+        Line, 
+        LineChart
+      } from "recharts"
 import { useTheme } from "@mui/material";
 import { useMemo } from "react";
 
@@ -19,7 +29,7 @@ const Row1 = () => {
   console.log("data:", data);
 
   // Setup 3 : Adding data from MongoDB database
-  // Adding revenueExpense data
+  // revenueExpense data to our chart
     const revenueExpenses = useMemo(() => {
     return (
       data &&
@@ -32,9 +42,25 @@ const Row1 = () => {
       })
     );
   }, [data]);
+
+  // Step 6 : Adding data from MongoDB database
+  // revenueProfit data to our chart
+  const revenueProfit = useMemo(() => {
+    return (
+      data &&
+      data[0].monthlyData.map(({ month, revenue, expenses }) => {
+        return {
+          name: month.substring(0, 3),
+          revenue: revenue,
+          profit: (revenue - expenses).toFixed(3),
+        };
+      })
+    );
+  }, [data]);
   
   return (
     <>
+    {/* Setup Revenue and Expense Area Chart */}
     <DashboardBox gridArea="a">
       {/* Setup 5 : Header and Title of graphs */}
       <BoxHeader
@@ -119,7 +145,78 @@ const Row1 = () => {
         </ResponsiveContainer>
     </DashboardBox>
 
-    <DashboardBox gridArea="b"></DashboardBox>
+
+{/* Setup 06 : Profit and Revenue Line Chart */}
+    <DashboardBox gridArea="b">
+        {/* Header and Title of graphs */}
+      <BoxHeader
+          title="Profit and Revenue"
+          subtitle="top line represents revenue, bottom line represents expenses"
+          sideText="+4%"
+      />
+      {/* Styling graphs for Revenue and Expenses */}
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart
+            width={500}
+            height={400}
+            data={revenueProfit}
+            margin={{
+              top: 20,
+              right: 0,
+              left: -10,
+              bottom: 55,
+            }}
+          >
+            <CartesianGrid vertical={false} stroke={palette.grey[800]}/>
+            {/* Kept XAxis to be the same */}
+            <XAxis 
+              dataKey="name" 
+              tickLine={false}
+              style={{fontSize:"10px"}}
+            />
+            {/* Modify YAxis as  */}
+            <YAxis
+              yAxisId="left"
+              tickLine={false}
+              axisLine={false}
+              style={{fontSize:"10px"}}
+            />
+            <YAxis
+              yAxisId="right"
+              orientation="right"
+              tickLine={false}
+              axisLine={false}
+              style={{fontSize:"10px"}}
+            />
+            
+            {/* Calling Data from MongoDB database */}
+            <Tooltip/>
+            {/* Adding XAxis taq name as profit and revenue */}
+            <Legend
+              height={20}
+              wrapperStyle={{
+                margin: "0 0 10px 0",
+              }}
+            />
+            {/* Change area to line */}
+            <Line 
+            // Left is Profit value axis
+              yAxisId="left"               
+              type="monotone"
+              dataKey="profit"
+              stroke={palette.tertiary[500]}
+            />
+            <Line 
+            // Right is Revenue value axis
+              yAxisId="right"
+              type="monotone"
+              dataKey="revenue"
+              stroke={palette.primary.main} 
+            />
+          </LineChart>
+        </ResponsiveContainer>
+    </DashboardBox>
+
     <DashboardBox gridArea="c"></DashboardBox>
     </>
   )
