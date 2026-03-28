@@ -25,7 +25,7 @@ const Navbar = (props: Props) => {
         {/* Icon come from : https://mui.com/material-ui/material-icons/?query=pi*/}
         <PixIcon sx={{ fontSize: "28px" }} />                 
         <Typography variant="h4" fontSize="16px">
-          finDashboard
+          finnDashboard
         </Typography>
       </FlexBetween>
 

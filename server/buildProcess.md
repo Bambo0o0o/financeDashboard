@@ -319,17 +319,47 @@ docker: <https://www.docker.com/products/docker-desktop/>
    14) In {Row1.tsx} file change value from data={data} to data={revenueExpenses} in AreaChart<> taq
    ***Server error cannot access database mongoDB atlas from IP adress isn't whitelisted**
    ***Solve by : Go to mongoDB atlas then whitlist IP address**
-   15) In {Row1.tsx} file change value from dataKey="uv" to dataKey="revenue"
-   16) In {Row1.tsx} Indentify palette before const {data} with : const {palette} = useTheme()
-   17) Import useTheme from @mui/material
-   18) In {Row1.tsx} file change value from stroke="#8884d8" to stroke={palette.primary.main}
-   19) In {Row1.tsx} Adding fillOpacity as before fill: 1
-   20) In {Row1.tsx} file change value from fill="#8884d8" to fill="url(#colorRevenue)"
-   21) In {Row1.tsx} adding dot taq after datakey as : dot={true}
-   22) In {ROw1.tsx} repeat format area taq in dataKey from reveneu to expenses as dataKey="expenses"
-   23) In {ROw1.tsx} in expense area taq then change fill="url(#colorRevenue)" to fill="url(#colorExpenses)"
-   24) In {Row1.tsx} in expense area taq adding dot taq after datakey as : dot={true}
-   25) In {Row1.tsx} in XAxis taq cancel tickline as : tickLine={false}
-   26) In {Row1.tsx} in XAxis taq styling as : style={{fontSize:"10px"}}
 
+### Setup Revenue area graph(KPIs dash board)
 
+   1) In {Row1.tsx} file change value from dataKey="uv" to dataKey="revenue"
+   2) In {Row1.tsx} Indentify palette before const {data} with : const {palette} = useTheme()
+   3) Import useTheme from @mui/material
+   4) In {Row1.tsx} file change value from stroke="#8884d8" to stroke={palette.primary.main}
+   5) In {Row1.tsx} Adding fillOpacity as before fill: 1
+   6) In {Row1.tsx} file change value from fill="#8884d8" to fill="url(#colorRevenue)"
+   7) In {Row1.tsx} adding dot taq after datakey as : dot={true}
+
+### Setup Expenses area graph(KPIs dash board)
+
+   1) In {ROw1.tsx} repeat format area taq in dataKey from reveneu to expenses as dataKey="expenses"
+   2) In {ROw1.tsx} in expense area then change fill="url(#colorRevenue)" to fill="url(#colorExpenses)"
+   3) In {Row1.tsx} in expense area taq adding dot taq after datakey as : dot={true}
+
+### Setup XAxis and YAxis and Setup fading area under graph
+
+   1) In {Row1.tsx} in XAxis taq cancel tickline as : tickLine={false}
+   2) In {Row1.tsx} in XAxis taq styling as : style={{fontSize:"10px"}}
+   3) In {Row1.tsx} in XAxis taq datakey name must change "Name" to be "name"
+   4) In {Row1.tsx} in YAxis copy taq same XAxis to YAxis then
+      1) Delete datakey taq
+      2) Adding axisLine as : strokeWidth "0"
+      3) Adjusting YAxis gap value as domain(between value) : 8000,23000
+      4) Deleting Catesian taq as : CartesianGrid strokeDasharray
+   5) Adding Fading(Shaded) under graph area by
+      1) Adding defs taq above XAxis taq
+      2) Adding linearGradient taq and setup Fading(Shaded) for colorRevenue and colorExpenses as : offset, stopColor, stopOpacity
+   6) Custromize graph margins as : top 15, right 25, left -10, bottom 60,
+
+### Setup Header and Title
+
+   1) Create {BoxHeader.tsx} in components folder
+   2) Using template as : tsrafce
+   3) Import @mui/material, FlexBetween and React
+   4) Setup type Properties as : Props
+   5) Setup callBack function as : BoxHeader()
+   6) Adding palette constance by useTheme
+   7) Create return value as : FlexBetween, Typography and Styling
+   8) Export boxHeader
+   9) In {Row1.tsx} file import BoxHeader
+   10) Adding BoxHeader above ResponsiveContainer taq

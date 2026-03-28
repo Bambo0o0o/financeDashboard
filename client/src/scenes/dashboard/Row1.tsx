@@ -1,20 +1,24 @@
-// // Setup 01 : Simple setup Row1
+// Setup 01 : Simple setup Row1
 import DashboardBox from "@/components/DashboardBox"
 import {useGetKpisQuery} from "@/state/api"
 
-// // Setup 02 : Setup recharts components
+// Setup 02 : Setup recharts components
 import {ResponsiveContainer, AreaChart, CartesianGrid, XAxis, YAxis, Tooltip, Area} from "recharts"
 import { useTheme } from "@mui/material";
 import { useMemo } from "react";
 
-type Props = {}
+// Setup 03 : Setup Header and Titles
+import BoxHeader from "@/components/BoxHeader";
+// Move props setup to BoxHeader.tsx
 
-const Row1 = (props:Props) => {
+// Setup ROW1 COL1 as Revenue and Expenses
+const Row1 = () => {
   const { palette } = useTheme();
   const { data } = useGetKpisQuery();
   // Logging data from KPI database :
   console.log("data:", data);
 
+  // Setup 3 : Adding data from MongoDB database
   // Adding revenueExpense data
     const revenueExpenses = useMemo(() => {
     return (
@@ -32,6 +36,13 @@ const Row1 = (props:Props) => {
   return (
     <>
     <DashboardBox gridArea="a">
+      {/* Setup 5 : Header and Title of graphs */}
+      <BoxHeader
+          title="Revenue and Expenses"
+          subtitle="top line represents revenue, bottom line represents expenses"
+          sideText="+4%"
+      />
+      {/* Setup 4 : Styling graphs for Revenue and Expenses */}
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             width={500}
@@ -44,13 +55,49 @@ const Row1 = (props:Props) => {
               bottom: 60,
             }}
           >
-            <CartesianGrid strokeDasharray="3 3"/>
+            {/* Styling Fade gradient for Revenue*/}
+             <defs>
+              <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
+                <stop
+                  offset="5%"
+                  stopColor={palette.primary[300]}
+                  stopOpacity={0.5}
+                />
+                <stop
+                  offset="95%"
+                  stopColor={palette.primary[300]}
+                  stopOpacity={0}
+                />
+              </linearGradient>
+            {/* Styling Fade gradient for Expense*/}
+              <linearGradient id="colorExpenses" x1="0" y1="0" x2="0" y2="1">
+                <stop
+                  offset="5%"
+                  stopColor={palette.primary[300]}
+                  stopOpacity={0.5}
+                />
+                <stop
+                  offset="95%"
+                  stopColor={palette.primary[300]}
+                  stopOpacity={0}
+                />
+              </linearGradient>
+            </defs>
+
+            {/* Setup XAxis and YAxis */}
             <XAxis 
-              dataKey="Name" 
+              dataKey="name" 
               tickLine={false}
               style={{fontSize:"10px"}}
             />
-            <YAxis/>
+            <YAxis
+              tickLine={false}
+              axisLine={{strokeWidth:"0"}}
+              style={{fontSize:"10px"}}
+              domain={[8000,23000]}
+            />
+            
+            {/* Calling Data from MongoDB database */}
             <Tooltip/>
             <Area 
               type="monotone" 
