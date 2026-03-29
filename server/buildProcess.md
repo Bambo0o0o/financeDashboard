@@ -371,6 +371,26 @@ docker: <https://www.docker.com/products/docker-desktop/>
          </Pie>
       </PieChart>
 
+### Scatter-Chart : <https://recharts.github.io/en-US/examples/SimpleScatterChart/>
+
+      <ScatterChart
+      style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
+      responsive
+      margin={{
+        top: 20,
+        right: 0,
+        bottom: 0,
+        left: 0,
+      }}
+    >
+      <CartesianGrid />
+      <XAxis type="number" dataKey="x" name="stature" unit="cm" />
+      <YAxis type="number" dataKey="y" name="weight" unit="kg" width="auto" />
+      <Tooltip cursor={{ strokeDasharray: '3 3' }} defaultIndex={defaultIndex} />
+      <Scatter activeShape={{ fill: 'red' }} name="A school" data={data} fill="#8884d8" />
+      <RechartsDevtools />
+    </ScatterChart>
+
 ## Setup KPIs dashboard
 
    <!-- Backend setup -->
@@ -655,3 +675,33 @@ docker: <https://www.docker.com/products/docker-desktop/>
    2) Second is "Losses in Revenue" and "Profit Margins"
 4) Import BoxHeader, FlexBetween from components folder
 5) Import Box and Typography from @mui/material
+
+### Setup Product Prices VS Expenses Row2Column3
+
+#### Setup Product Prices VS Expenses using : Scatter Chart
+
+1) Go to recharts as : <https://recharts.github.io/en-US/examples/SimpleScatterChart/>
+2) Copy code in scatterChart tag and place in : </DashboardBox gridArea="f">
+   1) Adding BoxHeader with : title and sideText
+   2) Adding ResponsiveContainer with : width and height
+   3) Adding margin to ScatterChart tag : top 20, right 25, left -10, bottom 40
+   4) Adding stroke to CartesianGrid as :  stroke={palette.grey[800]}
+3) Setup XAxis as
+   1) Setup dataKey as : "price"
+   2) Setup name as : "price"
+   3) Delete : unit tag
+   4) Adding axisLine and tickLine as : false
+   5) Adding style as : fontSize: "10px"
+   6) Adding tickFormatter as callBack function
+4) Setup YAxis same as XAxis fields then change "name" and "dataKey" as : expense
+5) Setup ZAxis as
+   1) Setup type as : number
+   2) range as : 20
+6) Setup Tooltip as : formatter callBack function
+7) Setup Scatter tag as
+   1) Setup name as : "Product Expense Ratio"
+   2) Setup data as : productExpenseData
+   3) Setup fill as : fill={palette.tertiary[500]}
+8) Adding fetching data from MongoDB database with :productExpenseData
+9) Adding fetching field as : id, price, expense
+

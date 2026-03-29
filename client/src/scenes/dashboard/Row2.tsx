@@ -5,7 +5,7 @@ import FlexBetween from "@/components/FlexBetween";
 import { useGetKpisQuery, useGetProductsQuery } from "@/state/api"
 import { Box, Typography, useTheme } from "@mui/material";
 import { useMemo } from "react";
-import { CartesianGrid, Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import { CartesianGrid, Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, Scatter, ScatterChart, Tooltip, XAxis, YAxis, ZAxis } from "recharts";
 
 // Creat pieData array which didn't fetching data from database just hard code
 const pieData=[
@@ -23,9 +23,20 @@ const Row2 = () => {
   // Log fetching data from server complete
   console.log("data:", operationalData)
 
-// Setup 9 : Adding data from MongoDB database
-  // Campaigns and Targets data to our chart
-
+// Setup 10 : Adding data from MongoDB database
+  // productExpenseData data to our chart
+    const productExpenseData = useMemo(() => {
+    return (
+      productData &&
+      productData.map(({ _id, price, expense }) => {
+        return {
+          id: _id,
+          price: price,
+          expense: expense,
+        };
+      })
+    );
+  }, [productData]);
 
 // Setup 8 : Adding data from MongoDB database
   // operationalExpenses data to our chart
@@ -161,7 +172,49 @@ const Row2 = () => {
       </FlexBetween>
     </DashboardBox>
     
-    <DashboardBox gridArea="f"></DashboardBox>
+    {/* Setup 10 : Product Prices VS Expenses using Scatter-Chart */}
+    <DashboardBox gridArea="f">
+      <BoxHeader title="Product Prices VS Expenses" sideText="+4%" />
+      <ResponsiveContainer width="100%" height="100%">
+        <ScatterChart
+          // responsive
+          margin={{
+            top: 20,
+            right: 25,
+            bottom: 40,
+            left: -10,
+          }}
+        >
+          <CartesianGrid  stroke={palette.grey[800]}/>
+          <XAxis 
+            type="number" 
+            dataKey="price" 
+            name="price" 
+            axisLine={false}
+            tickLine={false}
+            style={{ fontSize: "10px" }}
+            tickFormatter={(v) => `$${v}`}
+          />
+          <YAxis 
+            type="number"
+            dataKey="expense"
+            name="expense"
+            axisLine={false}
+            tickLine={false}
+            style={{ fontSize: "10px" }}
+            tickFormatter={(v) => `$${v}`} 
+          />
+          <ZAxis type="number" range={[20]} />
+          <Tooltip formatter={(v) => `$${v}`} />
+          <Scatter 
+            name="Product Expense Ratio"
+            data={productExpenseData}
+            fill={palette.tertiary[500]}
+          />
+
+        </ScatterChart>
+      </ResponsiveContainer>
+    </DashboardBox>
     </>
   )
 }
