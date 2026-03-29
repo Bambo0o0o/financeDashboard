@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time : 03:33:25 /5:23:37
+Last building time : 03:46:45 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -565,7 +565,7 @@ docker: <https://www.docker.com/products/docker-desktop/>
    3) Create express Router as : express.Router()
    4) Change name router from "/kpis" to be "/products"
    5) Change find function from KPI to : Product.find()
-   6) Keep callBack function to fetch data from MongoDB database as : router.get("/products", async (req, res) => {}
+   6) Keep callBack function to fetch data from MongoDB database as : router.get("/products", async (req, res) => {})
    7) Keep catch up status for : 200 and 400
 
 3) Create {Product.js} file in models folder (Is command to upload data from {data.js} to MongoDB)
@@ -692,16 +692,54 @@ docker: <https://www.docker.com/products/docker-desktop/>
    3) Delete : unit tag
    4) Adding axisLine and tickLine as : false
    5) Adding style as : fontSize: "10px"
-   6) Adding tickFormatter as callBack function
+   6) Adding tickFormatter as callBack function : tickFormatter={(v) => `$${v}`}
 4) Setup YAxis same as XAxis fields then change "name" and "dataKey" as : expense
 5) Setup ZAxis as
    1) Setup type as : number
    2) range as : 20
-6) Setup Tooltip as : formatter callBack function
+6) Setup Tooltip with formatter callBack function as : formatter={(v) => `$${v}`}
 7) Setup Scatter tag as
    1) Setup name as : "Product Expense Ratio"
    2) Setup data as : productExpenseData
    3) Setup fill as : fill={palette.tertiary[500]}
 8) Adding fetching data from MongoDB database with :productExpenseData
-9) Adding fetching field as : id, price, expense
+   1) Copy operationalExpenses
+   2) Change name to productExpenseData
+   3) Change data name from operationalData to productData
+   4) Adding fetching data fields as : id, price, expense
+   ***Complete timestamp as : 03:46:45***
 
+## Back to Backend to setup tranctions on database 
+
+1) Go to {index.js} file in server folder
+   1) Setup route for "Transaction" as : app.use("/transaction", transactionRoutes)
+   2) Import transaction routes from /routes/transaction.js
+   3) Import Transaction from /models/Transaction.js
+   4) Import transactons from /data/data.js
+2) Create {transaction.js} file in routes folder
+   1) Import express from express 
+   2) Import Transaction from /models/Transaction.js
+   3) Create express router as : const router = express.Router()
+   4) Ctrate callBack function : router.get("/transactions", async (req, res) => {})
+   5) Catch up status for : 200 and 404
+   6) Protect server slowdown from Transaction.find() by adding : .limit(50) and .sort({ createdOn: -1 })
+3) Go to {index.js} file in server folder
+   1) Upload data set to MongoDB database as oneTime : Transaction.insertMany(transactions)
+   ***Upload data must do one time then have to marks as note : 03:51:15**
+
+## Back to Frontend to reading Transaction from database
+
+### Setup Frontend for reading data
+
+1) Go to {api.js} file in state folder
+   1) Import GetTransactionsResponse from /types
+   2) Addinf "Transactions" to tagTypes
+   3) In endpoints callBack function adding function to get data from database as : getTransactions: build.query()
+2) Go to {types.js} file in state folder
+   1) Setup GetProductsResponse schema as : id, _id, __v, buyer, amount, productIds, createdAt, updatedAt
+
+## Setup Row3
+
+### Setup Lists of Products
+
+#### Setup Lists of Products using : Data Grid

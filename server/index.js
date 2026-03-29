@@ -15,11 +15,12 @@ import KPI from "./models/KPI.js";                      // One time used
 // Setup 03 : Import product to dashboard
 import productRoutes from "./routes/product.js";
 import Product from "./models/Product.js";              // One time used
-import { kpis, products } from "./data/data.js";
+// import { kpis, products } from "./data/data.js";
 
-// import transactionRoutes from "./routes/transaction.js";
-// import Transaction from "./models/Transaction.js";
-// import { kpis, products, transactions } from "./data/data.js";
+// Setup 04 : Import transaction to dashboard
+import transactionRoutes from "./routes/transaction.js";
+import Transaction from "./models/Transaction.js";   // One time used
+import { kpis, products, transactions } from "./data/data.js";
 
 /* Setup 01 :CONFIGURATIONS */
 dotenv.config();
@@ -42,7 +43,8 @@ app.use(cors());
 app.use("/kpi", kpiRoutes);
 // Setup 03 : product
 app.use("/product", productRoutes);
-// app.use("/transaction", transactionRoutes);
+// Setup 03 : transaction
+app.use("/transaction", transactionRoutes);
 
 
 // /* Setup 01-1 : MONGOOSE SETUP */
@@ -59,6 +61,6 @@ mongoose
     // await mongoose.connection.db.dropDatabase();     // Add 01
     // KPI.insertMany(kpis);                            // Add 02
     // Product.insertMany(products);                    // Add 03
-    // Transaction.insertMany(transactions);
+    // Transaction.insertMany(transactions);            // Add 04
   })
   .catch((error) => console.log(`${error} did not connect`));
