@@ -773,4 +773,21 @@ docker: <https://www.docker.com/products/docker-desktop/>
 6) Modify scollbar to be dark as in {index.css} file with : ::-webkit-scrollbar{}
    ***This table from mui/data-grid will fail if used newer version than EdRoh***
    ***Solve by : Using package.json EdRoh's then re-install package***
-   
+
+#### Setup Lists of Products usin : Simple Data Grid
+
+1) Copy Lists of Products code and place in : </DashboardBox gridArea="h">
+2) In {Row3.tsx} file in /src/scenes/dashboard modify
+   1) Change title to be : Recent Orders
+   2) Change sideText to be : transactionData with lastest transaction
+   3) In sx tag keep the same as productData table
+   4) Modify mt as : 1rem
+   5) Modify height as : 80%
+   6) Change rows data to be : rows={transactionDataData || []}
+   7) Change columns data to be : {transactionColumns}
+   8) Adding fetching data from database as : transactionColumns
+      1) Field id as : field: "_id"
+      2) Field buyer as : field: "buyer"
+      3) Field amount as : field: "amount"
+      4) Field productID as : field: "productIds"
+***When need to drop down data in MondoDB we can used {index.js} file in server folder and we unmark all of them then remark them again***

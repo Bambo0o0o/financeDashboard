@@ -18,6 +18,34 @@ const Row3 = () => {
   const { data: transactionData } = useGetTransactionsQuery();
   // console.log("transactionData:", transactionData)
 
+  // Setup 12 : Adding data from MongoDB database
+  // transactionColumns data to our table 
+  const transactionColumns = [
+    {
+      field: "_id",
+      headerName: "id",
+      flex: 1,
+    },
+    {
+      field: "buyer",
+      headerName: "Buyer",
+      flex: 0.67,
+    },
+    {
+      field: "amount",
+      headerName: "Amount",
+      flex: 0.35,
+      renderCell: (params: GridCellParams) => `$${params.value}`,
+    },
+    {
+      field: "productIds",
+      headerName: "Count",
+      flex: 0.1,
+      renderCell: (params: GridCellParams) =>
+        (params.value as Array<string>).length,
+    },
+  ];
+
   // Setup 11 : Adding data from MongoDB database
   // productColumns data to our table 
   const productColumns = [
@@ -39,7 +67,6 @@ const Row3 = () => {
       renderCell: (params: GridCellParams) => `$${params.value}`,
     },
   ]
-
 
   return (
     <>  
@@ -82,8 +109,46 @@ const Row3 = () => {
           />
         </Box>
     </DashboardBox>
+    
+    {/* Setup 12 : Recent Orders  */}
+    <DashboardBox gridArea="h">
+      <BoxHeader
+          title="Recent Orders"
+          sideText={`${transactionData?.length} lastest transaction`}
+      />
+        <Box
+          mt="1rem"
+          p="0 0.5rem"
+          height="80%"
+          // Finding how to fixed background color
+          sx={{
+            "& .MuiDataGrid-root": {
+              color: palette.grey[300],
+              border: "none",
+            },
+            "& .MuiDataGrid-cell": {
+              borderBottom: `1px solid ${palette.grey[800]} !important`,
 
-    <DashboardBox gridArea="h"></DashboardBox>
+            },
+            "& .MuiDataGrid-columnHeaders": {
+              borderBottom: `1px solid ${palette.grey[800]} !important`,
+
+            },
+            "& .MuiDataGrid-columnSeparator": {
+              visibility: "hidden",
+            },
+          }}
+        >
+          <DataGrid
+            columnHeaderHeight={25}
+            rowHeight={35}
+            hideFooter={true}
+            // Fetching data from database to show on table
+            rows={transactionData || []}
+            columns={transactionColumns}
+          />
+        </Box>
+    </DashboardBox>
     <DashboardBox gridArea="i"></DashboardBox>
     <DashboardBox gridArea="j"></DashboardBox>
     </>

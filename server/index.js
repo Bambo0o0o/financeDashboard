@@ -58,7 +58,7 @@ mongoose
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ADD DATA ONE TIME ONLY OR AS NEEDED */
-    // await mongoose.connection.db.dropDatabase();     // Add 01
+    // await mongoose.connection.db.dropDatabase();     // Add 01 : Use to clear(drop down) data in database
     // KPI.insertMany(kpis);                            // Add 02
     // Product.insertMany(products);                    // Add 03
     // Transaction.insertMany(transactions);            // Add 04
