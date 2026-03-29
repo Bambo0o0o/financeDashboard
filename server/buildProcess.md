@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time : 03:46:45 /5:23:37
+Last building time : 04:16:33 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -740,6 +740,37 @@ docker: <https://www.docker.com/products/docker-desktop/>
 
 ## Setup Row3
 
-### Setup Lists of Products
+### Setup Lists of Products Row3Column1
 
-#### Setup Lists of Products using : Data Grid
+1) Go to {Row3.tsx} file setup :
+   <!-- Setup TransactionQuery -->
+   1) Adding data as transactionData : const { data: transactionData } = useGetTransactionsQuery()
+   2) Import useGetTransactionsQuery from /state/api.js
+   <!-- Setup ProductsQuery -->
+   1) Adding data as productData : const { data: productData } = useGetProductsQuery()
+   2) Import useGetProductsQuery from /state/api.js
+   <!-- Setup KPIQuery -->
+   1) Adding data as kpiData : const { data: kpiData } = useGetKpisQuery()
+   2) Import useGetKpisQuery from /state/api.js
+
+#### Setup Lists of Products using : Simple Data Grid
+
+
+1) Go to materials UI : <https://mui.com/x/react-data-grid/>
+2) In {Row3.tsx} file in gridArea "g" tag adding BoxHeader adding :  title and sideText
+3) Adding Box tag under BoxHeader for styling data table
+***Using "Development tools" or (Ctrl + Shift +i) to check elements on web page by : Select Elements menu-->Select Left arrow which is "Select an element in the page to inspect it" then we can point on any area of web page it will pop-up tag of element that we are pointing on***
+4) Adding DataGrid tag under Box to setup table then adding
+   1) columnHeaderHeight as : 25
+   2) rowHeight as : 35
+   3) hideFooter as : true
+   4) rows as : rows={productData || []}
+   5) columns as : {productColumns}
+5) Setup fetching data from database with "productColumns" above return tag by setup
+   1) Field id as : field: "_id"
+   2) Field expense as : field: "expense"
+   3) Field price as : field: "price"
+6) Modify scollbar to be dark as in {index.css} file with : ::-webkit-scrollbar{}
+   ***This table from mui/data-grid will fail if used newer version than EdRoh***
+   ***Solve by : Using package.json EdRoh's then re-install package***
+   

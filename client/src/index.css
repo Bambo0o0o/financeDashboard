@@ -15,6 +15,7 @@ body,
   background-color: #1f2026;
 }
 
+/* Modify scrollbar as dark mode */
 ::-webkit-scrollbar {
   width: 10px;
 }
