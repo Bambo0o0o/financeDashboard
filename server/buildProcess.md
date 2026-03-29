@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time : 03:19:32 /5:23:37
+Last building time : 03:29:05 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -282,12 +282,52 @@ docker: <https://www.docker.com/products/docker-desktop/>
 
 ## Template Recharts(Reuseable)
 
+### Line-Chart : <https://recharts.github.io/en-US/examples/SimpleLineChart/>
+
       <ResponsiveContainer width="100%" height="100%">
-        <BoxHeader
-          title="Revenue Month by Month"
-          subtitle="graph representing the revenue month by month"
-          sideText="+4%"
-        />
+          <LineChart
+            width={500}
+            height={400}
+            data={revenueProfit}
+            margin={{
+              top: 20,
+              right: 0,
+              left: -10,
+              bottom: 55,
+            }}
+          >
+            <CartesianGrid vertical={false} stroke={palette.grey[800]}/>
+            <XAxis 
+              dataKey="name" 
+              tickLine={false}
+              style={{fontSize:"10px"}}
+            />
+            <YAxis
+              yAxisId="left"
+              tickLine={false}
+              axisLine={false}
+              style={{fontSize:"10px"}}
+            />
+            <Tooltip/>
+            <Legend
+              height={20}
+              wrapperStyle={{
+                margin: "0 0 10px 0",
+              }}
+            />
+            <Line 
+            // Left is Profit value axis
+              yAxisId="left"               
+              type="monotone"
+              dataKey="profit"
+              stroke={palette.tertiary[500]}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+
+### Bar-Chart : <https://recharts.github.io/en-US/examples/SimpleBarChart/>
+
+      <ResponsiveContainer width="100%" height="100%">
         <BarChart
           width={500}
           height={300}
@@ -308,6 +348,28 @@ docker: <https://www.docker.com/products/docker-desktop/>
           <Bar dataKey="uv" fill="#82ca9d" />
         </BarChart>
       </ResponsiveContainer>
+
+### Pie-Chart : <https://recharts.github.io/en-US/examples/PieChartWithPaddingAngle/>
+
+      <PieChart width={800} height={400} onMouseEnter={this.onPieEnter}>
+         <Pie
+            data={data}
+            cx={420}
+            cy={200}
+            startAngle={180}
+            endAngle={0}
+            innerRadius={60}
+            outerRadius={80}
+            fill="#8884d8"
+            paddingAngle={5}
+            dataKey="Value"
+         >
+         {data.map((entry, index)=>(
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]}
+            />
+         ))}
+         </Pie>
+      </PieChart>
 
 ## Setup KPIs dashboard
 
@@ -540,6 +602,8 @@ docker: <https://www.docker.com/products/docker-desktop/>
 
 ### Setup OperationalExpenses Row2Column1
 
+#### Setup modified tag from Profit-Revenue to be OperationalExpenses using : Biaxial Line Chart
+
 1) As we saw here it look like R1C2{Row1.tsx} charts so we will copy it's setup and place in R2C1
    1) Copy </DashboardBox gridArea="b"> change gridArea to be "d"
    2) Setup import from red wavy intellisence by : Ctrl+.
@@ -560,3 +624,20 @@ docker: <https://www.docker.com/products/docker-desktop/>
        5) Changing revenue to be : "Operational Expenses"
        6) Changing expenses to be : "Non-Operational Expenses"
    ***Remind : Name as fetching data from database must be the same as : Name as dataKey in return() function***
+
+### Setup Campaigns and Targets Row2Column2
+
+#### Setup Campaigns and Targets using : Pie Chart
+
+1) Go to recharts as : <https://recharts.github.io/en-US/examples/PieChartWithPaddingAngle/>
+2) Copy code in PieChart tag and place in : </DashboardBox gridArea="e">
+   1) Modify width as : 110
+   2) Modify height as : 100
+   3) Delete hover option on Pie : onMouseEnter={this.onPieEnter}
+   4) Adding margin below height as : top 0, right -10,left 10,bottom 0
+   5) Delete : cx and cy tags
+   6) Changing data value to be "pieData" as : data={pieData}
+   7) Changing innerRadius and outerRadius to be : 18 and 38
+   8) Delete fill tag in Pie tag
+   9) Changing paddingAngle value to be : 2
+   10) Changing fill in pieData.map() to be array as : fill={pieColors[index]}

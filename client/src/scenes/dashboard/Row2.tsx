@@ -4,7 +4,7 @@ import DashboardBox from "@/components/DashboardBox"
 import { useGetKpisQuery, useGetProductsQuery } from "@/state/api"
 import { useTheme } from "@mui/material";
 import { useMemo } from "react";
-import { CartesianGrid, Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import { CartesianGrid, Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 type Props = {}
 
 const Row2 = (props: Props) => {
@@ -34,7 +34,7 @@ const Row2 = (props: Props) => {
   
   return (
     <>  
-    {/* Setup 08 : ... Line Chart */}
+    {/* Setup 08 : operationalExpenses using Line Chart */}
     <DashboardBox gridArea="d">
         {/* Header and Title of graphs */}
       <BoxHeader
@@ -95,8 +95,39 @@ const Row2 = (props: Props) => {
           </LineChart>
         </ResponsiveContainer>
     </DashboardBox>
-
-    <DashboardBox gridArea="e"></DashboardBox>
+    
+    {/* Setup 09 : Campaigns and Targets using Pie-Chart */}
+    <DashboardBox gridArea="e">
+      <PieChart 
+        width={800} 
+        height={400}
+        margin={{
+          top: 0,
+          right: -10,
+          left: 10,
+          bottom: 0,
+        }}
+      >
+         <Pie
+            data={pieData}
+            startAngle={180}
+            endAngle={0}
+            innerRadius={18}
+            outerRadius={38}
+            paddingAngle={2}
+            dataKey="Value"
+         >
+         {pieData.map((entry, index)=>(
+            <Cell 
+              key={`cell-${index}`} 
+              fill={pieColors[index]}
+            />
+         ))}
+         </Pie>
+         
+      </PieChart>
+    </DashboardBox>
+    
     <DashboardBox gridArea="f"></DashboardBox>
     </>
   )
