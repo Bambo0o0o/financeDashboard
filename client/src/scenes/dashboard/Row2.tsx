@@ -1,19 +1,31 @@
 // Setup 01 : Simple setup Row2
 import BoxHeader from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox"
+import FlexBetween from "@/components/FlexBetween";
 import { useGetKpisQuery, useGetProductsQuery } from "@/state/api"
 import { useTheme } from "@mui/material";
 import { useMemo } from "react";
 import { CartesianGrid, Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
-type Props = {}
 
-const Row2 = (props: Props) => {
+// Creat pieData array which didn't fetching data from database just hard code
+const pieData=[
+  {name: "Group A", value:600},
+  {name: "Group B", value:400},
+]
+
+const Row2 = () => {
   const {palette}=useTheme()
-  // Add fetching data route from backend
+  // Adding palette for pieColor
+  const pieColors = [palette.primary[800],palette.primary[300]];
+  // Adding fetching data route from backend
   const {data: operationalData}=useGetKpisQuery();
   const {data: productData} = useGetProductsQuery();
   // Log fetching data from server complete
   console.log("data:", operationalData)
+
+// Setup 9 : Adding data from MongoDB database
+  // Campaigns and Targets data to our chart
+
 
 // Setup 8 : Adding data from MongoDB database
   // operationalExpenses data to our chart
@@ -98,34 +110,36 @@ const Row2 = (props: Props) => {
     
     {/* Setup 09 : Campaigns and Targets using Pie-Chart */}
     <DashboardBox gridArea="e">
-      <PieChart 
-        width={800} 
-        height={400}
-        margin={{
-          top: 0,
-          right: -10,
-          left: 10,
-          bottom: 0,
-        }}
-      >
-         <Pie
-            data={pieData}
-            startAngle={180}
-            endAngle={0}
-            innerRadius={18}
-            outerRadius={38}
-            paddingAngle={2}
-            dataKey="Value"
-         >
-         {pieData.map((entry, index)=>(
-            <Cell 
-              key={`cell-${index}`} 
-              fill={pieColors[index]}
-            />
-         ))}
-         </Pie>
-         
-      </PieChart>
+      <BoxHeader title="Campaigns and Targets" sideText="+4%" />
+      <FlexBetween mt="0.25rem" gap="1.5rem" pr="1rem">
+        <PieChart 
+          width={110} 
+          height={100}
+          margin={{
+            top: 0,
+            right: -10,
+            left: 10,
+            bottom: 0,
+          }}
+        >
+          <Pie
+              stroke="none"
+              data={pieData}
+              innerRadius={18}
+              outerRadius={38}
+              paddingAngle={2}
+              dataKey="value"
+          >
+          {pieData.map((entry, index)=>(
+              <Cell 
+                key={`cell-${index}`} 
+                fill={pieColors[index]}
+              />
+          ))}
+          </Pie>
+        </PieChart>
+        
+      </FlexBetween>
     </DashboardBox>
     
     <DashboardBox gridArea="f"></DashboardBox>

@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time : 03:29:05 /5:23:37
+Last building time : 03:33:25 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -641,3 +641,11 @@ docker: <https://www.docker.com/products/docker-desktop/>
    8) Delete fill tag in Pie tag
    9) Changing paddingAngle value to be : 2
    10) Changing fill in pieData.map() to be array as : fill={pieColors[index]}
+3) Adding pieColors below palette as : const pirColors = [palette.primary[800],palette.primary[300]]
+4) Create pieData array above Row2 callBack function as : const pieData = [{}]
+***Remind : Name as dataKey must be conform with value as : const pieData=[{name: "Group A", value:600},{name: "Group B", value:400}] which ==> dataKey="value" as name value:400 or value:600***
+5) In pie tag add stroke as : stroke="none"
+
+#### Adding Pie chart with details
+
+1) 
