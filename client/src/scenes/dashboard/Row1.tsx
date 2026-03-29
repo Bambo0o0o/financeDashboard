@@ -89,6 +89,7 @@ const Row1 = () => {
           <AreaChart
             width={500}
             height={400}
+            // Calling Data from MongoDB database
             data={revenueExpenses}
             margin={{
               top: 15,
@@ -138,8 +139,6 @@ const Row1 = () => {
               style={{fontSize:"10px"}}
               domain={[8000,23000]}
             />
-            
-            {/* Calling Data from MongoDB database */}
             <Tooltip/>
             <Area 
               type="monotone" 

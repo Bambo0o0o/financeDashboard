@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time : 03:10:25 /5:23:37
+Last building time : 03:19:32 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -334,6 +334,8 @@ docker: <https://www.docker.com/products/docker-desktop/>
    ***Upload data must do one time then have to marks as note : 02:15:15**
 
    <!-- Frontend setup -->
+## Setup Row1
+
    1) Go to {Row1.tsx} file create console.log() with data to check fetching data complete on browser development tools as : fetch/XHR
    2) On backend termical (server) got warning 304(mean loging to backend) as : GET /kpi/kpis/ HTTP/1.1" 304
    3) Go to rechart which is chart library : <https://recharts.github.io/?p=/en-US/>
@@ -351,9 +353,9 @@ docker: <https://www.docker.com/products/docker-desktop/>
    ***Server error cannot access database mongoDB atlas from IP adress isn't whitelisted**
    ***Solve by : Go to mongoDB atlas then whitlist IP address**
 
-## Setup Revenue and Expenses Row1Column1
+### Setup Revenue and Expenses Row1Column1
 
-### Setup Revenue area graph(KPIs dash board)
+#### Setup Revenue area graph(KPIs dash board)
 
    1) In {Row1.tsx} file change value from dataKey="uv" to dataKey="revenue"
    2) In {Row1.tsx} Indentify palette before const {data} with : const {palette} = useTheme()
@@ -398,9 +400,9 @@ docker: <https://www.docker.com/products/docker-desktop/>
    10) Adding BoxHeader above ResponsiveContainer tags
        1) Setup title, subtitle, sideText
 
-## Setup Profit and Revenue Row1Column2
+### Setup Profit and Revenue Row1Column2
 
-### Setup modified tag from revenue-expenses to be Profit-Revenue using : Biaxial Line Chart
+#### Setup modified tag from revenue-expenses to be Profit-Revenue using : Biaxial Line Chart
 
 1) Go to Recharts with Biaxial Line Chart as : <https://recharts.github.io/en-US/examples/BiaxialLineChart/>
 2) In {Row1.tsx} file copy setup revenue and expenses in </DashboardBox gridArea="a"> tag
@@ -436,9 +438,9 @@ docker: <https://www.docker.com/products/docker-desktop/>
     3) Change value from "expenses" to "revenue-expenses"
     4) Setup digit math for revenue-expense to be 2 digit by .toFixed(2) as : profit: (revenue - expenses).toFixed(2)
 
-## Setup Revenue Month by Month Row1Column3
+### Setup Revenue Month by Month Row1Column3
 
-### Setup modified tag from revenue-expenses to be Revenue Month by Month using : Simple Bar Chart
+#### Setup modified tag from revenue-expenses to be Revenue Month by Month using : Simple Bar Chart
 
 1) Go to Recharts with Simple Bar Chart as : <https://recharts.github.io/en-US/examples/SimpleBarChart/>
    <!-- All here working in {Row1.tsx} -->
@@ -465,7 +467,9 @@ docker: <https://www.docker.com/products/docker-desktop/>
 ***Remind tools : Nivo charts will setup one environtment then reuseable to others charts***
 ***But Recharts have to setup own environment on every charts***
 
-## Back to Backend setup for Dashbord Row2 : Products
+## Setup Row2
+
+### Back to Backend setup for Dashbord Row2 : Products
 
 <!-- Backend setup -->
 1) Setup {index.js} file in server folder
@@ -515,12 +519,44 @@ docker: <https://www.docker.com/products/docker-desktop/>
 7) Toggle "Product.insertMany" tag on to upload data --> Save index.js --> Toggle Products tag off
    ***Upload data must do one time then have to marks as note : 03:12:15**
 
-## Back to Frontend setup for Dashbord Row2 : Products
+### Back to Frontend setup for Dashbord Row2 : Products
 
 <!-- Frontend setup -->
+#### Setup fetching data from backend
+
 1) Go to {api.js} file in /client/src/state folder
 2) In tagTypes tag adding : "Products"
 3) In endpoints callBack function adding :  getProducts: build.query()
 4) Adding "GetProductsResponse" to import /types
 5) Export "useGetProductsQuery"
 6) In {types.ts} file setup GetProductsResponse schema as : id, _id, __v, price, expense, transactions, createdAt, updatedAt
+
+#### Setup Products in {Rows2.tsx} file
+
+1) Go to {Row2.tsx} file
+   1) Setup fetching data from backend as : const {data} = useGetProductsQuery()
+   2) Import useGetProductsQuery from /state/api.ts
+   3) Check fetching data from server is complete : console.log("data:", data)
+
+### Setup OperationalExpenses Row2Column1
+
+1) As we saw here it look like R1C2{Row1.tsx} charts so we will copy it's setup and place in R2C1
+   1) Copy </DashboardBox gridArea="b"> change gridArea to be "d"
+   2) Setup import from red wavy intellisence by : Ctrl+.
+   3) Setup palette as : const {palette}=useTheme()
+   4) Change Title to be : "Operational vs Non-Operational Expenses"
+   5) Delete : Subtitle tag
+   6) In Line tag change dataKey left to be : "Non-Operational Expenses"
+   7) In Line tag change dataKey right to be : "Operational Expenses"
+   8) Delete : Legend tag
+   9) Adding orientation on left YAxis tag as : orientation="left"
+   10) Fetching data from database as : data={operationalExpenses}
+   11) In LineChart tag delete : width and height
+   12) Go to {Row1.tsx} file copy fetching data revenueExpenses to {Row2.tsx} above return
+       1) Change name from revenueExpenses as operationalExpenses
+       2) Adding data operationalData as : const {data: operationalData}=useGetKpisQuery()
+       3) Modify data productData as : const {data: productData} = useGetProductsQuery()
+       4) Changing data tag as : operationalData
+       5) Changing revenue to be : "Operational Expenses"
+       6) Changing expenses to be : "Non-Operational Expenses"
+   ***Remind : Name as fetching data from database must be the same as : Name as dataKey in return() function***
