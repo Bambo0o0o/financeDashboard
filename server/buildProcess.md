@@ -646,6 +646,12 @@ docker: <https://www.docker.com/products/docker-desktop/>
 ***Remind : Name as dataKey must be conform with value as : const pieData=[{name: "Group A", value:600},{name: "Group B", value:400}] which ==> dataKey="value" as name value:400 or value:600***
 5) In pie tag add stroke as : stroke="none"
 
-#### Adding Pie chart with details
+#### Adding Pie chart with details (Hard code didn't fetching data from backend)
 
-1) 
+1) Adding BoxHeader with : title and sideText
+2) Adding FlexBetween to handling column space as : 3 column
+3) Add 2 Box tags below PieChart tag with Hard code
+   1) One is "Target Sales"
+   2) Second is "Losses in Revenue" and "Profit Margins"
+4) Import BoxHeader, FlexBetween from components folder
+5) Import Box and Typography from @mui/material
