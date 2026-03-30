@@ -1,14 +1,18 @@
 // Setup 01 : Simple setup Row3
 import BoxHeader from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox"
+import FlexBetween from "@/components/FlexBetween";
 import { useGetKpisQuery, useGetProductsQuery, useGetTransactionsQuery } from "@/state/api";
-import { Box, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid, GridCellParams } from "@mui/x-data-grid";
+import { useMemo } from "react";
+import { Cell, Pie, PieChart } from "recharts";
 
 
 const Row3 = () => {
   const { palette } = useTheme();
-  // const pieColors = [palette.primary[800], palette.primary[500]];
+  // Setup 13 : Adding pieColor for pieChart
+  const pieColors = [palette.primary[800], palette.primary[500]];
 
   // Setup 01 : Adding fetching data route from backend : transaction
   const { data: kpiData } = useGetKpisQuery();
@@ -17,6 +21,28 @@ const Row3 = () => {
   // console.log("productData:", productData)
   const { data: transactionData } = useGetTransactionsQuery();
   // console.log("transactionData:", transactionData)
+
+  // Setup 13 : Adding data from MongoDB database
+  // Expense Breakdown By Category data to our PieChart 
+  const pieChartData = useMemo(() => {
+    if (kpiData) {
+      const totalExpenses = kpiData[0].totalExpenses;
+      return Object.entries(kpiData[0].expensesByCategory).map(
+        ([key, value]) => {
+          return [
+            {
+              name: key,
+              value: value,
+            },
+            {
+              name: `${key} of Total`,
+              value: totalExpenses - value,
+            },
+          ];
+        }
+      );
+    }
+  }, [kpiData]);
 
   // Setup 12 : Adding data from MongoDB database
   // transactionColumns data to our table 
@@ -149,8 +175,59 @@ const Row3 = () => {
           />
         </Box>
     </DashboardBox>
-    <DashboardBox gridArea="i"></DashboardBox>
-    <DashboardBox gridArea="j"></DashboardBox>
+
+    {/* Setup 13 : Expense Breakdown By Category */}
+    <DashboardBox gridArea="i">
+      <BoxHeader title="Expense Breakdown By Category" sideText="+4%" />
+      <FlexBetween mt="0.5rem" gap="0.5rem" p="0 1rem" textAlign="center">
+        {pieChartData?.map((data, i) => (
+            <Box key={`${data[0].name}-${i}`}>
+              <PieChart width={90} height={80}>
+                <Pie
+                  stroke="none"
+                  data={data}
+                  innerRadius={18}
+                  outerRadius={35}
+                  paddingAngle={2}
+                  dataKey="value"
+                >
+                  {data.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={pieColors[index]} />
+                  ))}
+                </Pie>
+              </PieChart>
+              <Typography variant="h5">{data[0].name}</Typography>
+            </Box>
+          ))}
+      </FlexBetween>
+    </DashboardBox>
+
+    {/* Setup 14 : Overall Summary and Explanation Data */}
+    <DashboardBox gridArea="j">
+        {/* <BoxHeader
+        title="Overall Summary and Explanation Data"
+        sideText="+15%"
+      />
+      <Box
+        height="15px"
+        margin="1.25rem 1rem 0.4rem 1rem"
+        bgcolor={palette.primary[800]}
+        borderRadius="1rem"
+      >
+        <Box
+          height="15px"
+          bgcolor={palette.primary[600]}
+          borderRadius="1rem"
+          width="40%"
+        ></Box>
+      </Box>
+      <Typography margin="0 1rem" variant="h6">
+        Orci aliquam enim vel diam. Venenatis euismod id donec mus lorem etiam
+        ullamcorper odio sed. Ipsum non sed gravida etiam urna egestas
+        molestie volutpat et. Malesuada quis pretium aliquet lacinia ornare
+        sed. In volutpat nullam at est id cum pulvinar nunc.
+      </Typography> */}
+    </DashboardBox>
     </>
   )
 }

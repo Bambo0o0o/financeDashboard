@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time : 04:16:33 /5:23:37
+Last building time : 04:34:05 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -774,7 +774,7 @@ docker: <https://www.docker.com/products/docker-desktop/>
    ***This table from mui/data-grid will fail if used newer version than EdRoh***
    ***Solve by : Using package.json EdRoh's then re-install package***
 
-#### Setup Lists of Products usin : Simple Data Grid
+#### Setup Recent Orders using : Simple Data Grid
 
 1) Copy Lists of Products code and place in : </DashboardBox gridArea="h">
 2) In {Row3.tsx} file in /src/scenes/dashboard modify
@@ -785,9 +785,32 @@ docker: <https://www.docker.com/products/docker-desktop/>
    5) Modify height as : 80%
    6) Change rows data to be : rows={transactionDataData || []}
    7) Change columns data to be : {transactionColumns}
-   8) Adding fetching data from database as : transactionColumns
+   8) Create transactionColumns function to fetching data from database by :
       1) Field id as : field: "_id"
       2) Field buyer as : field: "buyer"
       3) Field amount as : field: "amount"
       4) Field productID as : field: "productIds"
+
 ***When need to drop down data in MondoDB we can used {index.js} file in server folder and we unmark all of them then remark them again***
+
+#### Setup Lists of Products using : Pie Chart
+
+1) Go to {Row2.tsx} file then copy PieChart : </DashboardBox gridArea="i">
+2) Import PieChart elements from rechart as : Cell, Pie, PieChart
+3) Import @mui/materials elements as : Box, Typography, useTheme
+4) Adding BoxHeader with : title and sideText
+5) Adding FlexBetween to format gap between pieChart : mt, gap, p, textAlign
+6) Create Box tag and place PieChart in there
+7) Modify PieChart as :
+   1) Width and Height as : 90, 80
+   2) In Pie tag add : stroke, data, innerRadius, outerRadius, paddingAngle, dataKey
+   3) In Data tag add : map()=>(Cell key={} fill={})
+   4) Setup Typography
+   5) Add pieChartData to Box tax as : {pieChartData?.map((data, i) =>(<_Box></.Box>))}
+   6) Adding keyValue to Box tag as : key={`${data[0].name}-${i}`}
+8) Create pieChartData function to fetching data from database and rendering on frontend : place above return()
+9) Adding pieColor as : const pieColors = [palette.primary[800], palette.primary[500]]
+
+#### Setup Overall Summary and Explanation Data using : Status Bar
+
+1) Go to 
