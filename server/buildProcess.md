@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time : 04:34:05 /5:23:37
+Last building time : 04:37:15 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -813,4 +813,13 @@ docker: <https://www.docker.com/products/docker-desktop/>
 
 #### Setup Overall Summary and Explanation Data using : Status Bar
 
-1) Go to 
+1) Create BoxHeader with "title" and "sideText" in : </DashboardBox gridArea="j">
+2) To create barChart just use Box tag then :
+   1) Create Box tag in Box tag
+   2) Styling outer Box tag as : height, margin, bgcolor, borderRadius
+   3) Styling inner Box tag as : height, bgcolor, borderRadius, width
+3) Create Typography and Styling with margin and variant
+
+***Complete Dashboard page***
+
+## Setup Prediction graph
