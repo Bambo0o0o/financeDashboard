@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time : 04:37:15 /5:23:37
+Last building time : 04:41:25 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -823,3 +823,9 @@ docker: <https://www.docker.com/products/docker-desktop/>
 ***Complete Dashboard page***
 
 ## Setup Prediction graph
+
+1) Go to {App.tsx} file then adding Prediction route as : "/predictions"
+2) In {App.tsx} file import prediction from /scenes/predictions
+3) Create {index.tsx} file in predictions folder then
+   1) Using template as : tsrafce
+   2) 
