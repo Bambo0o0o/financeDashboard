@@ -964,7 +964,7 @@ docker: <https://www.docker.com/products/docker-desktop/>
          8) Package select : Free
          9) Advance option add environment :
             - Key : MONGO_URL
-            - value (Mongo URL as we created) : mongodb+srv://devillasu_db_user:rmBK7Ut9nmzNy2fY@dashboard0.7a9g7jo.mongodb.net/?appName=dashboard0
+            - value (Mongo URL as we created) : mongodb+srv://devillasu_db_user:L7FpiqXVn0yo1KQD@cluster0.0qb99d5.mongodb.net/?appName=Cluster0
          10) Adding another environment
             - Key : PORT
             - Value : 5001
