@@ -918,3 +918,75 @@ docker: <https://www.docker.com/products/docker-desktop/>
    4) Create "regressionLine" as : regression.linear(formatted)
    5) Create return function as monthData.map() with : name, Actual Revenue, Regression Line, Predicted Revenue
    ***Link for linear-regression : <https://github.com/Tom-Alexander/regression-js>***
+
+## Deploy application (05:10:20)
+
+1) Go to Fly.io<https://fly.io/docs/> which used to run a server as : "Free"
+   ***Fly.io is good because it alway running(Free as 7 day) it don't shutdown as render.com***
+2) Sign up "fly.io" with GitHub and SignIn with GitHub
+3) Install "fly.io" ---> Must install on "server folder"
+   1) Instal link <https://fly.io/docs/flyctl/install/#next-steps> as : pwsh -Command "iwr https://fly.io/install.ps1 -useb | iex"
+
+
+## Select Deploy to Render instead
+
+1) Go to Webside <render.com> : Is one way to post frontend/backend api to also can use <railway.app>
+2) Before render must check .gitignore :
+   1) Frontend(client) must include : .env.local
+   2) Backend must include : /node_modules and .env
+3) remove .git folder in project folder before upload : this case is mernDashboard
+4) Sign in <render.com> with GitHub account : <pramote.s@windowslive.com>
+5) On main project folder(mernDashboard)
+   1) Run git : git init
+   2) Go to GitHub create new repository : Bambo0o0o/<Repository_name>
+   3) Keep default Public and others then click : Create repository
+   4) Then follow these step :
+      1) <!-- Create new GitHub -->
+      2) git init
+      3) git add .
+      4) git commit -m "first commit"
+      5) git branch -M main
+      6) git remote add origin https://github.com/Bambo0o0o/deployDashBoard.git
+      7) git push -u origin main
+   5) Check .env don't existed on GitHub repository
+   6) Concept using GitHub to stored our code before sending it to Render.com and In there both frontend/backend will create .env and vars it self to link between frontend and backend data which following to this diagram : <https://1drv.ms/i/c/691f3d6ad160c142/IQR89w-KHvJrQ7EiQ8FunKZBAapCKzPa5fLcccIlBshP3fs?width=578&height=573>
+      <!-- Backend setup on Render  -->
+   7) Go to <render.com> then select "Web service" for Backend
+      1) Click Connect to our Github
+      2) Then select Only select repositories
+         1) On new web service Name as : admin-backend
+         2) Region : Oregon
+         3) Branch : master
+         4) Root directory (check on Github will be server folder) : server
+         5) Environment : Node
+         6) Build Command : server/npm install
+         7) Start command : npm run start
+         8) Package select : Free
+         9) Advance option add environment :
+            - Key : MONGO_URL
+            - value (Mongo URL as we created) : mongodb+srv://devillasu_db_user:rmBK7Ut9nmzNy2fY@dashboard0.7a9g7jo.mongodb.net/?appName=dashboard0
+         10) Adding another environment
+            - Key : PORT
+            - Value : 5001
+            - On Web service click : Create Web Service
+      3) Adding IP address to mongoDB by click on(Will get 3 IP Address) : "Connect button" on Render.com
+         1) Go to MongoDB go to Network access then IP Access List
+         2) Click on "Add IP Address" place on "Access List Entry" by 3 IP Address
+         3) Then Render will show on logs(When complete) as : Server Port 5001
+
+      <!-- Frontend setup on Render  -->
+   8) Go to <render.com> then select "Static Site" for Frontend
+      1) Click Connect to our Github
+         1) On new "Static Site" Name as : admin-frontend
+         2) Region : Oregon
+         3) Branch : master
+         4) Root directory (check on Github will be server folder) : client
+         5) Build Command : client/npm install
+         6) Start command : npm run build
+         7) Publish directory : build
+         8) Advance option add environment :
+            - Key : REACT_APP_BASE_URL
+            - value (URL created from Render) : Get from create backend
+            - On Web service click : Create Static Site
+         ***Error "not found /build directory" come from .gitignore cancel this folder update to Github : Solve by Adding build command on render as "npm install && npm run build"***
+         9) Getting render frontend web : <https://admin-frontend-w9kw.onrender.com>
