@@ -973,7 +973,8 @@ docker: <https://www.docker.com/products/docker-desktop/>
          1) Go to MongoDB go to Network access then IP Access List
          2) Click on "Add IP Address" place on "Access List Entry" by 3 IP Address
          3) Then Render will show on logs(When complete) as : Server Port 5001
-
+      4) Server on render : https://finndashboardbackend.onrender.com
+   
       <!-- Frontend setup on Render  -->
    8) Go to <render.com> then select "Static Site" for Frontend
       1) Click Connect to our Github
