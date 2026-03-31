@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time : 04:41:25 /5:23:37
+Last building time : 04:50:36 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -324,6 +324,30 @@ docker: <https://www.docker.com/products/docker-desktop/>
             />
           </LineChart>
         </ResponsiveContainer>
+
+### Area-Chart : <https://recharts.github.io/en-US/examples/SimpleAreaChart/>
+
+      <ResponsiveContainer width="100%" height="100%">
+         <AreaChart
+            style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
+            responsive
+            data={data}
+            margin={{
+            top: 20,
+            right: 0,
+            left: 0,
+            bottom: 0,
+            }}
+            onContextMenu={(_, e) => e.preventDefault()}
+         >
+         <CartesianGrid strokeDasharray="3 3" />
+         <XAxis dataKey="name" niceTicks="snap125" />
+         <YAxis width="auto" niceTicks="snap125" />
+         <Tooltip />
+         <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+         <RechartsDevtools />
+         </AreaChart>
+      </ResponsiveContainer>
 
 ### Bar-Chart : <https://recharts.github.io/en-US/examples/SimpleBarChart/>
 
@@ -828,4 +852,69 @@ docker: <https://www.docker.com/products/docker-desktop/>
 2) In {App.tsx} file import prediction from /scenes/predictions
 3) Create {index.tsx} file in predictions folder then
    1) Using template as : tsrafce
-   2) 
+   2) Change function name to be : Predictions
+   3) Setup palette as useTheme
+   4) Setup isPredictions and setIsPredictions as useState
+   5) Setup kpiData as useGetKpisQuery
+   6) In return function adding DashboardBox tag then
+      1) Setup width and height as : 100% both
+      2) Setup padding(p) as : 1rem
+      3) Setup overflow as : hidden
+      ***Now we will see a Box add we want***
+   7) Between Dashboard tag
+      1) Setup FlexBetween with margin(m) and gap : 1rem, 2.5rem and 1rem
+      2) Adding Box tag in FlexBetween tag
+      3) Setup Typography in Box tag by adding variant as "h3"
+      4) Adding text in Typography tag as : Revenue and Prediction
+      5) Setup Typography then adding variant as  "h6"
+      6) Adding text in Typography tag as : charted revenue and predicted revenue based on a simple linear regression model
+      7) Adding button for prediction trend with toggle-on/off with : onClick={()=setIsPredictions}
+      8) In Button tag styling with sx{} as : color, backgroundColor, boxShadow
+      9) Adding text in Box tag as : Show Predicted Revenue for Next Year
+
+### Adding Line chart on Prediction page
+
+1) Go to {Row1.tsx} copy Line chart tag and place below FlexBetween tag in {index.tsx} file
+2) Import recharts componentes as : ResponsiveContainer, LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line
+3) Configurate "CartesianGrid"  keep only "stroke" then add "strokeDasharray"
+4) Configurate "LineChart" delete : width and height
+5) Change resource data as : formattedData
+6) Configurate "margin" as : top 20, right 75, left 20, bottom 80
+7) Configurate "Legend" delete all then add verticalAlign as top
+
+### Configurate XAxis-YAxis and Layout
+   <!-- Configurate XAxis -->
+1) Adding "Label" between XAxis tag : value, offset, position
+   <!-- Configurate YAxis -->
+2) Delecte second YAxis left first then delete : yAxisId
+3) Adding "Label" between YAxis tag : value, angle, offset, position
+4) Adding "domain" in YAxis tag above tickLine as : 12000, 26000
+5) Change "axisLine" as : strokeWidth
+6) Delete : tickLine
+7) Adding "tickFormatter" as : {(v)=>`$${v}`}
+    <!-- Configurate Revenue-Line -->
+8) Delete yAxisId
+9) In Revenue Line tag change "dataKey" value as : Actual Revenue
+10) In Revenue Line tag change "stroke" to : palette.primary.main
+11) In Revenue Line tag adding "strokeWidth" as : 0
+12) In Revenue Line tag adding "dot" as : {{strokeWidth:5}}
+    <!-- Configurate Regression-Line -->
+13) In Regression Line tag change "dataKey" value as : Regression Line
+14) In Regression Line tag change "stroke" to : #8884d8
+15) In Regression Line tag adding "dot" as : false
+
+### Setup Prediction line toggle on/toggle off
+
+1) Adding "isPrediction" tag above LineChart end tag with "Regression Line" : {isPredictions && (...)}
+   1) Adding "Line" tag with : strokeDasharray, dataKey, stroke
+
+### Setup Fetching data from database to "formattedData"
+
+1) Install regression on client folder : npm i regression and npm i -D @types/regression
+2) Adding formattedData above return tag then :
+   1) Import "regression" and "DataPoint" from regression
+   2) Create "monthData" as : kpiData[0].monthlyData
+   3) Create "formatted" as : Array<_DataPoint> = monthData.map()
+   4) Create "regressionLine" as : regression.linear(formatted)
+   5) Create return function as monthData.map() with : name, Actual Revenue, Regression Line, Predicted Revenue
+   ***Link for linear-regression : <https://github.com/Tom-Alexander/regression-js>***
