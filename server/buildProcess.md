@@ -973,6 +973,10 @@ docker: <https://www.docker.com/products/docker-desktop/>
          1) Go to MongoDB go to Network access then IP Access List
          2) Click on "Add IP Address" place on "Access List Entry" by 3 IP Address
          3) Then Render will show on logs(When complete) as : Server Port 5001
+      ***Error01 : NodeJs new version than local**
+      ***Solve by : Add Environment by Key: NODE_VERSION and Value: presently local version***
+      ***Error02 : mismatched mogoose 7.8.9 mismatched with mongoose-currency 0.2.0***
+      ***Solve by setup render as : npm install --legacy-peer-deps***
       4) Server on render : https://finndashboardbackend.onrender.com
    
       <!-- Frontend setup on Render  -->
@@ -990,4 +994,14 @@ docker: <https://www.docker.com/products/docker-desktop/>
             - value (URL created from Render) : Get from create backend
             - On Web service click : Create Static Site
          ***Error "not found /build directory" come from .gitignore cancel this folder update to Github : Solve by Adding build command on render as "npm install && npm run build"***
-         9) Getting render frontend web : <https://admin-frontend-w9kw.onrender.com>
+         ***Error : TypsScript config mismatch ***
+         ***Solve by : {
+            "compilerOptions": {
+               "module": "NodeNext",
+               "moduleResolution": "NodeNext",
+               "resolveJsonModule": true,
+               "esModuleInterop": true,
+               "target": "ES2020"
+            }
+            }***
+         9) Getting render frontend web : <https://finndashboardfrontend.onrender.com>
