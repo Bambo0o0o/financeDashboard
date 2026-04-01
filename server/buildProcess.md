@@ -988,7 +988,7 @@ docker: <https://www.docker.com/products/docker-desktop/>
          4) Root directory (check on Github will be server folder) : client
          5) Build Command : client/npm install && npm run build
          6) Start command : npm run build
-         7) Publish directory : build
+         7) Publish directory : dist
          8) Advance option add environment :
             - Key : REACT_APP_BASE_URL
             - value (URL created from Render) : Get from create backend
