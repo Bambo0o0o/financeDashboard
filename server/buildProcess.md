@@ -993,14 +993,5 @@ docker: <https://www.docker.com/products/docker-desktop/>
             - Key : REACT_APP_BASE_URL
             - value (URL created from Render) : Get from create backend
             - On Web service click : Create Static Site
-         ***Error : TypsScript config mismatch ***
-         ***Solve by : {
-            "compilerOptions": {
-               "module": "NodeNext",
-               "moduleResolution": "NodeNext",
-               "resolveJsonModule": true,
-               "esModuleInterop": true,
-               "target": "ES2020"
-            }
-            }***
+         ***Error 
          9) Getting render frontend web : <https://finndashboardfrontend.onrender.com>
