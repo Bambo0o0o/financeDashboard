@@ -986,14 +986,13 @@ docker: <https://www.docker.com/products/docker-desktop/>
          2) Region : Oregon
          3) Branch : master
          4) Root directory (check on Github will be server folder) : client
-         5) Build Command : client/npm install
+         5) Build Command : client/npm install && npm run build
          6) Start command : npm run build
          7) Publish directory : build
          8) Advance option add environment :
             - Key : REACT_APP_BASE_URL
             - value (URL created from Render) : Get from create backend
             - On Web service click : Create Static Site
-         ***Error "not found /build directory" come from .gitignore cancel this folder update to Github : Solve by Adding build command on render as "npm install && npm run build"***
          ***Error : TypsScript config mismatch ***
          ***Solve by : {
             "compilerOptions": {
