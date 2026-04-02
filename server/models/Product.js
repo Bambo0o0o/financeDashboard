@@ -1,7 +1,13 @@
 import mongoose from "mongoose";
 import { loadType } from "mongoose-currency";
 
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
+const Schema = new mongoose.Schema({
+  amount: {
+    type: Number,
+    required: true
+  }
+});
 loadType(mongoose);
 
 const ProductSchema = new Schema(

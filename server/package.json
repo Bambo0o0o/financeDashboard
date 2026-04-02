@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +19,6 @@
     "express": "^4.22.1",
     "helmet": "^6.2.0",
     "mongoose": "^7.8.9",
-    "mongoose-currency": "^0.2.0",
     "morgan": "^1.10.1"
   },
   "devDependencies": {

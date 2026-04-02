@@ -1,6 +1,6 @@
 # Build MERN financeDashboard
 
-Last building time : 04:50:36 /5:23:37
+Last building time : 05:14:05 /5:23:37
 
 link : <https://www.youtube.com/watch?v=uoJ0Tv-BFcQ>
 myGitHub : <https://github.com/Bambo0o0o/mernReactDashboard.git>
@@ -919,13 +919,110 @@ docker: <https://www.docker.com/products/docker-desktop/>
    5) Create return function as monthData.map() with : name, Actual Revenue, Regression Line, Predicted Revenue
    ***Link for linear-regression : <https://github.com/Tom-Alexander/regression-js>***
 
-## Deploy application (05:10:20)
+## Deploy application On <fly.io> (05:10:20)
 
-1) Go to Fly.io<https://fly.io/docs/> which used to run a server as : "Free"
+1) Go to Fly.io<https://fly.io/docs/getting-started/launch/> which used to run a server as : "Free"
    ***Fly.io is good because it alway running(Free as 7 day) it don't shutdown as render.com***
 2) Sign up "fly.io" with GitHub and SignIn with GitHub
-3) Install "fly.io" ---> Must install on "server folder"
-   1) Instal link <https://fly.io/docs/flyctl/install/#next-steps> as : pwsh -Command "iwr https://fly.io/install.ps1 -useb | iex"
+3) Install "fly.io" : ***Must install on "server folder"***
+   1) Instal(windows) on project directory : <D:\WorkShop\MERN\Me simple app\financeDashboard\financeDashboard>
+   2) Insatll "Powershell" for windows : <https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-windows?view=powershell-7.6#msi>
+   3) Install code as : pwsh -Command "iwr https://fly.io/install.ps1 -useb | iex"
+   4) Go to server directory on "Powershell" as administator : cd server
+   5) Sign Up fly.io : fly auth signup
+   6) Sign in fly.io : fly auth login
+   7) Open fly.io as : flyctl launch
+   8) Setup app name : <https://fly.io/cli/launch/3271736e6b34336e6e76786c37716563673237746b7072743779667475356637>
+      1) Apps name : finnbackend
+      2) Organization : Personal
+      3) Region : sin-Singapore, Singapore
+      4) Setup PostgresSQL(If need) : n
+      5) Setup Upstash Redis database(If need) : n
+      6) Create .dockerignore from 1 .gitignore(if need) : y
+      7) Internal Port(if need) : 8080
+      8) Go to MongoDB web service and setup Network Access(IP Access List) 
+      9) Admin URL : <https://fly.io/apps/finnbackend2>
+      10) Hostname : <finnbackend2.fly.dev>
+      11) Deploy now : y
+   ***If fail to setup will need "Docker" <https://docs.docker.com/desktop/setup/install/windows-install/> Then Setup deploy as : fly deploy --local-only***
+
+      12) Install docker
+      13) Install new version WSL docker(if need) : wsl --update
+      14) Waitting to Docker open
+      15) Setup fly.io : flyctl launch
+      16) Run command deploy : fly deploy --local-only
+      17) Waitting fly build image : if fail and told did't found docker file
+          1) Create {Dockerfile} in server folder
+          2) Adding these code :
+            <!-- # Use official Node.js image
+            FROM node:18
+
+            # Set working directory
+            WORKDIR /app
+
+            # Copy package files
+            COPY package*.json ./
+
+            # Install dependencies
+            RUN npm install
+
+            # Copy all files
+            COPY . .
+
+            # Expose port (match your server port)
+            EXPOSE 5000
+
+            # Start app -->
+            CMD ["npm", "start"]
+          3) Adding "start": "node index.js" tag in {package.js} file in script tag
+          4) Test deploy again : fly deploy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Select Deploy to Render instead
@@ -993,5 +1090,5 @@ docker: <https://www.docker.com/products/docker-desktop/>
             - Key : REACT_APP_BASE_URL
             - value (URL created from Render) : Get from create backend
             - On Web service click : Create Static Site
-         ***Error 
+
          9) Getting render frontend web : <https://finndashboardfrontend.onrender.com>
