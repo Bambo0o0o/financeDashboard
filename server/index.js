@@ -55,11 +55,14 @@ app.use("/transaction", transactionRoutes);
 const PORT = process.env.PORT || 9000;                  // 9000 is backup PORT when presently failed to connect
 mongoose
   .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true,
   })
   .then(async () => {
     app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+    // Check correct MONGO_URL
+    // console.log("MONGO_URL:", process.env.MONGO_URL);
+    
 
     /* ADD DATA ONE TIME ONLY OR AS NEEDED */
     // await mongoose.connection.db.dropDatabase();     // Add 01 : Use to clear(drop down) data in database
