@@ -31,7 +31,11 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
+// ***Solve cann't render
+// app.use(cors());
+app.use(cors({
+  origin: "*"
+}));
 
 
 // Test run : Setup 01
@@ -55,7 +59,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(async () => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+    app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
 
     /* ADD DATA ONE TIME ONLY OR AS NEEDED */
     // await mongoose.connection.db.dropDatabase();     // Add 01 : Use to clear(drop down) data in database
