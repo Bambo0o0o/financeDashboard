@@ -946,7 +946,7 @@ docker: <https://www.docker.com/products/docker-desktop/>
       3) git add .
       4) git commit -m "first commit"
       5) git branch -M main
-      6) git remote add origin https://github.com/Bambo0o0o/deployDashBoard.git
+      6) git remote add origin https://github.com/Bambo0o0o/financeDashboard
       7) git push -u origin main
    5) Check .env don't existed on GitHub repository
    6) Concept using GitHub to stored our code before sending it to Render.com and In there both frontend/backend will create .env and vars it self to link between frontend and backend data which following to this diagram : <https://1drv.ms/i/c/691f3d6ad160c142/IQR89w-KHvJrQ7EiQ8FunKZBAapCKzPa5fLcccIlBshP3fs?width=578&height=573>
@@ -954,17 +954,17 @@ docker: <https://www.docker.com/products/docker-desktop/>
    7) Go to <render.com> then select "Web service" for Backend
       1) Click Connect to our Github
       2) Then select Only select repositories
-         1) On new web service Name as : admin-backend
+         1) On new web service Name as : finnDashboardBackendd
          2) Region : Oregon
-         3) Branch : master
+         3) Branch : main
          4) Root directory (check on Github will be server folder) : server
          5) Environment : Node
-         6) Build Command : server/npm install
-         7) Start command : npm run start
+         6) Build Command : server/npm install --legacy-peer-deps
+         7) Start command : npm run dev
          8) Package select : Free
          9) Advance option add environment :
             - Key : MONGO_URL
-            - value (Mongo URL as we created) : mongodb+srv://devillasu_db_user:rmBK7Ut9nmzNy2fY@dashboard0.7a9g7jo.mongodb.net/?appName=dashboard0
+            - value (Mongo URL as we created) : mongodb+srv://devillasu_db_user:L7FpiqXVn0yo1KQD@cluster0.0qb99d5.mongodb.net/?appName=Cluster0
          10) Adding another environment
             - Key : PORT
             - Value : 5001
@@ -977,16 +977,16 @@ docker: <https://www.docker.com/products/docker-desktop/>
       <!-- Frontend setup on Render  -->
    8) Go to <render.com> then select "Static Site" for Frontend
       1) Click Connect to our Github
-         1) On new "Static Site" Name as : admin-frontend
+         1) On new "Static Site" Name as : finnDashboardFrontend
          2) Region : Oregon
          3) Branch : master
          4) Root directory (check on Github will be server folder) : client
-         5) Build Command : client/npm install
-         6) Start command : npm run build
-         7) Publish directory : build
+         5) Build Command : client/npm install && npm run build
+         6) Start command : npm run dev
+         7) Publish directory : dist
          8) Advance option add environment :
-            - Key : REACT_APP_BASE_URL
-            - value (URL created from Render) : Get from create backend
+            - Key : VITE_BASE_URL
+            - value (URL created from Render) : Get from create backend as <https://finndashboardbackend.onrender.com>
             - On Web service click : Create Static Site
          ***Error "not found /build directory" come from .gitignore cancel this folder update to Github : Solve by Adding build command on render as "npm install && npm run build"***
          9) Getting render frontend web : <https://admin-frontend-w9kw.onrender.com>
